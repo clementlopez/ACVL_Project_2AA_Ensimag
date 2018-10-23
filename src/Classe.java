@@ -1,3 +1,3 @@
-public class Classe {
+public class Classe extends ClasseAbstraite {
 
 }
