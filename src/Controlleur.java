@@ -36,7 +36,10 @@ public class Controlleur {
         }
     }
     private void crerNouveauDiagrammeDeClasse(){
-        DiagrammeClasse d = new DiagrammeClasse();
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        DiagrammeClasse d = new DiagrammeClasse(str);
+        this.listeDiagrammeClasse.add(d);
         d.menu();
     }
     private void afficherOptionsMenu(){
