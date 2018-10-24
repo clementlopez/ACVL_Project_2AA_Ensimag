@@ -48,14 +48,14 @@ public class ClasseAbstraite {
 
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
-        System.out.println("1- Créer une nouvelle classe");
-        System.out.println("2- Voir les classes existantes");
-        System.out.println("3- Modifier les classes existantes");
-        System.out.println("4- Supprimer une classe existante");
-        System.out.println("5- Créer une nouvelle association");
-        System.out.println("6- Voir les associations existantes");
-        System.out.println("7- Modifier les associations existantes");
-        System.out.println("8- Supprimer une association existante");
+        System.out.println("1- Créer un nouvel attribut");
+        System.out.println("2- Voir les attributs existants");
+        System.out.println("3- Modifier les attributs existants");
+        System.out.println("4- Supprimer un attribut existant");
+        System.out.println("5- Créer une nouvelle méthode");
+        System.out.println("6- Voir les méthodes existantes");
+        System.out.println("7- Modifier les méthodes existantes");
+        System.out.println("8- Supprimer une méthode existante");
     }
 
     public String getName() {
