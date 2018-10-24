@@ -46,6 +46,7 @@ public class Controlleur {
     private void crerNouveauDiagrammeDeClasse(){
         Scanner sc = null;
         try{
+            System.out.println("Donner un nom à votre diagramme de classe");
         	sc = new Scanner(System.in);
         	String str = sc.nextLine();
             DiagrammeClasse d = new DiagrammeClasse(str);
@@ -57,7 +58,7 @@ public class Controlleur {
         		sc.close();
         	}
         }
-        
+
     }
     private void afficherOptionsMenu(){
         System.out.println("** Menu Diagramme de Classe **");
@@ -76,7 +77,7 @@ public class Controlleur {
     public DiagrammeClasse choixDiagrammeDeClasse(){
         System.out.println("** Choix d'un Diagramme de Classe **");
         for (int i=0; i<listeDiagrammeClasse.size(); i++){
-            System.out.print(i + " - " + listeDiagrammeClasse.get(i).getName() );
+            System.out.print(i + " - " + listeDiagrammeClasse.get(i).getNom() );
         }
         int choix;
         Scanner sc = new Scanner(System.in);

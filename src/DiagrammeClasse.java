@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 @SuppressWarnings("StatementWithEmptyBody")
 public class DiagrammeClasse {
-    String name;
+    String nom;
     ArrayList<ClasseAbstraite> listeClasses;
     ArrayList<Association> listeAssociations;
 
     public DiagrammeClasse(String mName) {
-        this.name = mName;
+        this.nom = mName;
     }
 
     public void menu(){
@@ -56,6 +56,7 @@ public class DiagrammeClasse {
         }
     }
     private void creerNouvelleClasse(){
+        System.out.println("Donner un nom à votre classe");
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
         Classe c = new Classe(str);
@@ -86,28 +87,28 @@ public class DiagrammeClasse {
 
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
     public void afficher () {
-        System.out.println("** Diagramme de Classes"+ this.getName() +"**");
+        System.out.println("** Diagramme de Classes"+ this.getNom() +"**");
         //TODO
     }
 
     public void afficherClasses () {
-        System.out.println("** Classes du Diagramme de Classes"+ this.getName() +"**");
+        System.out.println("** Classes du Diagramme de Classes"+ this.getNom() +"**");
         //TODO
     }
     public void afficherAssociations () {
-        System.out.println("** Associations du Diagramme de Classes"+ this.getName() +"**");
+        System.out.println("** Associations du Diagramme de Classes"+ this.getNom() +"**");
         //TODO
     }
 
     public ClasseAbstraite choixClasse(){
         System.out.println("** Choix d'une Classe **");
         for (int i=0; i<listeClasses.size(); i++){
-            System.out.print(i + " - " + listeClasses.get(i).getName() );
+            System.out.print(i + " - " + listeClasses.get(i).getNom() );
         }
         int choix;
         Scanner sc = new Scanner(System.in);
