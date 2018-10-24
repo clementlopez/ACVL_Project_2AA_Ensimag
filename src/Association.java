@@ -1,6 +1,16 @@
 import java.util.Scanner;
 
 public class Association {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public Association() {
+        this.name = "Anonyme";
+    }
+
     public void menu() {
 
         //TODO
