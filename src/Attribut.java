@@ -10,21 +10,21 @@ public class Attribut {
 
     public void menu() {
 
-        String str;
+        int choix;
         Scanner sc = new Scanner(System.in);
-        str = sc.nextLine();
+        choix = sc.nextInt();
 
-        switch (str) {
-            case "1":
+        switch (choix) {
+            case 1:
                 System.out.println("Vous avez saisi : choix 1");
                 break;
-            case "2":
+            case 2:
                 System.out.println("Vous avez saisi : choix 2");
                 break;
-            case "3":
+            case 3:
                 System.out.println("Vous avez saisi : choix 3");
                 break;
-            case "4":
+            case 4:
                 System.out.println("Vous avez saisi : choix 4");
                 break;
           default:

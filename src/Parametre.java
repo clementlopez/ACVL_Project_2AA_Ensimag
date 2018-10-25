@@ -13,22 +13,23 @@ public class Parametre {
 
 		afficherOptionsMenu();
 
-		String str;
+		int choix;
 		Scanner sc = new Scanner(System.in);
-		str = sc.nextLine();
+		choix = sc.nextInt();
 
-		switch (str) {
-			case "1":
+		switch (choix) {
+			case 1:
 				System.out.println("Vous avez saisi : choix 1");
 				System.out.println("Comment voulez vous appeler ce parametre");
+				String str;
 				str = sc.nextLine();
 				setNom(str);
 				break;
-			case "2":
+			case 2:
 				System.out.println("Vous avez saisi : choix 2");
 				//TODO
 				break;
-			case "3":
+			case 3:
 				System.out.println("Vous avez saisi : choix 3");
 				//TODO
 				break;

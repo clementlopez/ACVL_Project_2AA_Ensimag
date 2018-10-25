@@ -14,37 +14,37 @@ public class Methode {
 
 		afficherOptionsMenu();
 
-		String str;
+		int choix;
 		Scanner sc = new Scanner(System.in);
-		str = sc.nextLine();
+		choix = sc.nextInt();
 
-		switch (str) {
-			case "1":
+		switch (choix) {
+			case 1:
 				System.out.println("Vous avez saisi : choix 1");
 				creerNouveauParametre();
 				break;
-			case "2":
+			case 2:
 				System.out.println("Vous avez saisi : choix 2");
 				afficherParametres();
 				break;
-			case "3":
+			case 3:
 				System.out.println("Vous avez saisi : choix 3");
 				choixParametre().menu();
 				break;
-			case "4":
+			case 4:
 				System.out.println("Vous avez saisi : choix 4");
 				//TODO
 				break;
-			case "5":
+			case 5:
 				System.out.println("Vous avez saisi : choix 5");
 				break;
-			case "6":
+			case 6:
 				System.out.println("Vous avez saisi : choix 6");
 				break;
-			case "7":
+			case 7:
 				System.out.println("Vous avez saisi : choix 7");
 				break;
-			case "8":
+			case 8:
 				System.out.println("Vous avez saisi : choix 8");
 				break;
 			default:
