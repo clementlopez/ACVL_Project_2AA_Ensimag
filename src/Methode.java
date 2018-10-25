@@ -3,12 +3,10 @@ import java.util.List;
 
 public class Methode {
 	String nom;
-	String typeRet = "void";
+	String typeRet;
 	List<Parametre> params;
 	
-	
 	public Methode(String nom) {
-		super();
 		this.nom = nom;
 	}
 	
