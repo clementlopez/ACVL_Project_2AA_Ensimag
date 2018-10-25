@@ -1,8 +1,8 @@
+import java.util.List;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Controlleur {
-    private ArrayList<DiagrammeClasse>  listeDiagrammeClasse;
+    private List<DiagrammeClasse> listeDiagrammeClasse;
 
     public Controlleur() {
 

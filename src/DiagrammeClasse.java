@@ -1,11 +1,11 @@
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @SuppressWarnings("StatementWithEmptyBody")
 public class DiagrammeClasse {
     String nom;
-    ArrayList<ClasseAbstraite> listeClasses;
-    ArrayList<Association> listeAssociations;
+    List<ClasseAbstraite> listeClasses;
+    List<Association> listeAssociations;
 
     public DiagrammeClasse(String mName) {
         this.nom = mName;

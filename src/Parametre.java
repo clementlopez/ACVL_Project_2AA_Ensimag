@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Parametre {
 	String nom;
@@ -8,6 +9,42 @@ public class Parametre {
 		super();
 		this.nom = nom;
 	}
+	public void menu() {
+
+		afficherOptionsMenu();
+
+		String str;
+		Scanner sc = new Scanner(System.in);
+		str = sc.nextLine();
+
+		switch (str) {
+			case "1":
+				System.out.println("Vous avez saisi : choix 1");
+				System.out.println("Comment voulez vous appeler ce parametre");
+				str = sc.nextLine();
+				setNom(str);
+				break;
+			case "2":
+				System.out.println("Vous avez saisi : choix 2");
+				//TODO
+				break;
+			case "3":
+				System.out.println("Vous avez saisi : choix 3");
+				//TODO
+				break;
+			default:
+		}
+	}
+	private void afficherOptionsMenu() {
+		System.out.println("** Menu Classe **");
+
+		System.out.println("Que voulez vous faire ?");
+		System.out.println("0- Quitter");
+		System.out.println("1- Rennomer le parametre");
+		System.out.println("2- Définir le type du parametre");
+		System.out.println("3- Définir la valeur par defaut du parametre");
+	}
+
 	public String getNom() {
 		return nom;
 	}

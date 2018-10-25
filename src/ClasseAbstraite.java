@@ -1,16 +1,18 @@
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ClasseAbstraite {
 
     private String nom;
-    private ArrayList<Attribut> listeAttributs;
+    private List<Attribut> listeAttributs;
 
     public ClasseAbstraite(String mName) {
         this.nom = mName;
     }
 
     public void menu() {
+
+        afficherOptionsMenu();
 
         String str;
         Scanner sc = new Scanner(System.in);
