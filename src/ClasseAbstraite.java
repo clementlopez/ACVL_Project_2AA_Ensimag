@@ -63,6 +63,9 @@ public class ClasseAbstraite {
         System.out.println("6- Voir les méthodes existantes");
         System.out.println("7- Modifier les méthodes existantes");
         System.out.println("8- Supprimer une méthode existante");
+        System.out.println("9- Renommer la classe");//TODO
+        System.out.println("9- Rendre la classe abstraite");//TODO
+
     }
     private void creerNouvelAttribut(){
         System.out.println("Donner un nom à votre attribut");

@@ -31,13 +31,13 @@ public class Parametre {
 				break;
 			case 3:
 				System.out.println("Vous avez saisi : choix 3");
-				//TODO
+				//TODO attention, defini automatiquement le type
 				break;
 			default:
 		}
 	}
 	private void afficherOptionsMenu() {
-		System.out.println("** Menu Classe **");
+		System.out.println("** Menu Parametre **");
 
 		System.out.println("Que voulez vous faire ?");
 		System.out.println("0- Quitter");

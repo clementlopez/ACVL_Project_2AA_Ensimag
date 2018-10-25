@@ -35,9 +35,9 @@ public class Attribut {
 
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
-        System.out.println("1- Créer un nouvel attribut");
-        System.out.println("2- Voir les attributs existants");
-        System.out.println("3- Modifier les attributs existants");
+        System.out.println("1- Rennomer le'attribut");
+        System.out.println("2- Définir le type de l'attribut");
+        System.out.println("3- Définir la valeur par defaut de l'attribut");
 
     }
 

@@ -29,7 +29,14 @@ public class Association {
         }
     }
     void afficherOptionsMenu(){
-        //TODO
+
+        System.out.println("** Menu Association **");
+
+        System.out.println("Que voulez vous faire ?");
+        System.out.println("0- Quitter");
+        System.out.println("1- Rennomer l'association");
+        System.out.println("3- Modifier la navigabilité de l'association");
+        System.out.println("4- Modifier la multiplicité de l'association");
     };
 
 }

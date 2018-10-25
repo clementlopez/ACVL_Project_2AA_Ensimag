@@ -19,6 +19,7 @@ public class Methode {
 		choix = sc.nextInt();
 
 		switch (choix) {
+
 			case 1:
 				System.out.println("Vous avez saisi : choix 1");
 				creerNouveauParametre();
@@ -51,7 +52,7 @@ public class Methode {
 		}
 	}
 	private void afficherOptionsMenu() {
-		System.out.println("** Menu Classe **");
+		System.out.println("** Menu Méthode **");
 
 		System.out.println("Que voulez vous faire ?");
 		System.out.println("0- Quitter");
@@ -62,7 +63,7 @@ public class Methode {
 		System.out.println("5- Ajouter un type de retour");
 		System.out.println("6- Modifier le type de retour existant");
 		System.out.println("7- Supprimer le type de retour existant");
-		System.out.println("8- todo");
+		System.out.println("8- Renommer la méthode");//TODO
 	}
 	private void creerNouveauParametre(){
 		System.out.println("Donner un nom à votre attribut");

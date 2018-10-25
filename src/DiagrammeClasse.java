@@ -84,6 +84,8 @@ public class DiagrammeClasse {
         System.out.println("6- Voir les associations existantes");
         System.out.println("7- Modifier les associations existantes");
         System.out.println("8- Supprimer une association existante");
+        System.out.println("9- Gerer les relations d'héritage");//TODO
+        System.out.println("10- Renommer le diagramme de classe");//TODO
 
     }
 
