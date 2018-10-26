@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,6 +10,8 @@ public class DiagrammeClasse {
 
     public DiagrammeClasse(String mName) {
         this.nom = mName;
+        listeClasses = new ArrayList<>();
+        listeAssociations = new ArrayList<>();
     }
 
     public void menu(){
@@ -34,6 +37,7 @@ public class DiagrammeClasse {
                 break;
             case 4:
                 System.out.println("Vous avez saisi : choix 4");
+                System.out.println("Non implémentés");
                 //TODO
                 break;
             case 5:
@@ -50,12 +54,14 @@ public class DiagrammeClasse {
                 break;
             case 8:
                 System.out.println("Vous avez saisi : choix 8");
+                System.out.println("Non implémentés");
                 //TODO
                 break;
             default:
         }
     }
     private void creerNouvelleClasse(){
+        System.out.println("** Création d'une classe **");
         System.out.println("Donner un nom à votre classe");
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
@@ -66,7 +72,15 @@ public class DiagrammeClasse {
 
     private void creerNouvelleAssociation(){
         if(listeClasses.size()>=1){
-            //TODO
+            System.out.println("** Création d'un association de classes **");
+            System.out.println("Les associations non binaires en sont pas implémentées"); //todo
+            System.out.println("Choissisez la classe d'origine");
+            ClasseAbstraite co = choixClasse();
+            System.out.println("Choissisez la classe d'arrivée de l'association");
+            ClasseAbstraite ce = choixClasse();
+            System.out.println("Choissisez la classe d'origine");
+            Association a = new Association(co,ce);
+            a.menu();
         }else {
             System.out.println("Vous devez d'abord créer une classe");
         }
@@ -119,6 +133,7 @@ public class DiagrammeClasse {
 
             choix = sc.nextInt();
         }while(choix > listeClasses.size());
+        System.out.println("Vous avez choisi la classe " + listeClasses.get(choix).getNom());
 
         return listeClasses.get(choix);
     }

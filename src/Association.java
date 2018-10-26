@@ -2,13 +2,17 @@ import java.util.Scanner;
 
 public class Association {
     private String name;
+    ClasseAbstraite origine; //TOD a renemmoer, c'ets moche
+    ClasseAbstraite extremite;
 
     public String getName() {
         return name;
     }
 
-    public Association() {
+    public Association(ClasseAbstraite mOrigine, ClasseAbstraite mExtremite) {
         this.name = "Anonyme";
+        this.origine = mOrigine;
+        this.extremite = mExtremite;
     }
 
     public void menu() {

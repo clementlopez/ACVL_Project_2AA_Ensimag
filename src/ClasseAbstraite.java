@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,6 +9,19 @@ public class ClasseAbstraite {
 
     public ClasseAbstraite(String mName) {
         this.nom = mName;
+        listeAttributs = new ArrayList<>();
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public List<Attribut> getListeAttributs() {
+        return listeAttributs;
+    }
+
+    public void setListeAttributs(List<Attribut> listeAttributs) {
+        this.listeAttributs = listeAttributs;
     }
 
     public void menu() {
@@ -47,6 +61,13 @@ public class ClasseAbstraite {
             case 8:
                 System.out.println("Vous avez saisi : choix 8");
                 break;
+            case 9:
+                System.out.println("Vous avez saisi : choix 9");
+                System.out.println("Comment voulez vous appeler cet attribut");
+                String str;
+                str = sc.nextLine();
+                setNom(str);
+                break;
             default:
         }
     }
@@ -68,6 +89,7 @@ public class ClasseAbstraite {
 
     }
     private void creerNouvelAttribut(){
+        System.out.println("Création d'un nouvel attribut");
         System.out.println("Donner un nom à votre attribut");
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
@@ -88,6 +110,7 @@ public class ClasseAbstraite {
 
             choix = sc.nextInt();
         }while(choix > listeAttributs.size());
+        System.out.println("Vous avez choisi l'attribut " + listeAttributs.get(choix).getNom());
 
         return listeAttributs.get(choix);
     }

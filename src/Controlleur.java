@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -5,6 +6,7 @@ public class Controlleur {
     private List<DiagrammeClasse> listeDiagrammeClasse;
 
     public Controlleur() {
+        listeDiagrammeClasse = new ArrayList<>();
 
     }
     public void play(){
@@ -31,7 +33,8 @@ public class Controlleur {
 		                break;
 		            case 4:
 		                System.out.println("Vous avez saisi : choix 4");
-		                //TODO
+                        System.out.println("Non implémentés");
+                        //TODO
 		                break;
 		            default:
 		        }
@@ -46,6 +49,7 @@ public class Controlleur {
     private void crerNouveauDiagrammeDeClasse(){
         Scanner sc = null;
         try{
+            System.out.println("** Création d'un diagramme de classe **");
             System.out.println("Donner un nom à votre diagramme de classe");
         	sc = new Scanner(System.in);
         	String str = sc.nextLine();
@@ -70,6 +74,7 @@ public class Controlleur {
         System.out.println("4- Supprimer un diagramme de classes existant");
     }
     public void afficherDiagrammes(){
+        System.out.println("** Diagrammes de classe **");
         for (int i=0; i<listeDiagrammeClasse.size(); i++){
             listeDiagrammeClasse.get(i).afficher();
         }

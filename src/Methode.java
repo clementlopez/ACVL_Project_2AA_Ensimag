@@ -9,6 +9,7 @@ public class Methode {
 
 	public Methode(String nom) {
 		this.nom = nom;
+		listeParametres = new ArrayList<>();
 	}
 	public void menu() {
 
@@ -86,6 +87,7 @@ public class Methode {
 
 			choix = sc.nextInt();
 		}while(choix > listeParametres.size());
+		System.out.println("Vous avez choisi le parametre " + listeParametres.get(choix).getNom());
 
 		return listeParametres.get(choix);
 	}
