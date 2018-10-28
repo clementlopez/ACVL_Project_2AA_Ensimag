@@ -25,50 +25,51 @@ public class ClasseAbstraite {
     }
 
     public void menu() {
-
-        afficherOptionsMenu();
-
-        int choix;
-        Scanner sc = new Scanner(System.in);
-        choix = sc.nextInt();
-
-        switch (choix) {
-            case 1:
-                System.out.println("Vous avez saisi : choix 1");
-                creerNouvelAttribut();
-                break;
-            case 2:
-                System.out.println("Vous avez saisi : choix 2");
-                afficherAttributs();
-                break;
-            case 3:
-                System.out.println("Vous avez saisi : choix 3");
-                choixAttribut().menu();
-                break;
-            case 4:
-                System.out.println("Vous avez saisi : choix 4");
-                //TODO
-                break;
-            case 5:
-                System.out.println("Vous avez saisi : choix 5");
-                break;
-            case 6:
-                System.out.println("Vous avez saisi : choix 6");
-                break;
-            case 7:
-                System.out.println("Vous avez saisi : choix 7");
-                break;
-            case 8:
-                System.out.println("Vous avez saisi : choix 8");
-                break;
-            case 9:
-                System.out.println("Vous avez saisi : choix 9");
-                System.out.println("Comment voulez vous appeler cet attribut");
-                String str;
-                str = sc.nextLine();
-                setNom(str);
-                break;
-            default:
+    	int choix = -1;
+        while(choix!=0){
+        	afficherOptionsMenu();
+	        Scanner sc = new Scanner(System.in);
+	        choix = sc.nextInt();
+	        switch (choix) {
+	            case 1:
+	                System.out.println("Vous avez saisi : choix 1");
+	                creerNouvelAttribut();
+	                break;
+	            case 2:
+	                System.out.println("Vous avez saisi : choix 2");
+	                afficherAttributs();
+	                break;
+	            case 3:
+	                System.out.println("Vous avez saisi : choix 3");
+	                choixAttribut().menu();
+	                break;
+	            case 4:
+	                System.out.println("Vous avez saisi : choix 4");
+	                //TODO
+	                break;
+	            case 5:
+	                System.out.println("Vous avez saisi : choix 5");
+	                break;
+	            case 6:
+	                System.out.println("Vous avez saisi : choix 6");
+	                break;
+	            case 7:
+	                System.out.println("Vous avez saisi : choix 7");
+	                break;
+	            case 8:
+	                System.out.println("Vous avez saisi : choix 8");
+	                break;
+	            case 9:
+	                System.out.println("Vous avez saisi : choix 9");
+	                System.out.println("Comment voulez vous appeler cet attribut");
+	                String str = "";
+	                while(str.equals("")){
+	                	str = sc.nextLine();
+	                }
+	                setNom(str);
+	                break;
+	            default:
+	        }
         }
     }
     private void afficherOptionsMenu() {
@@ -76,21 +77,21 @@ public class ClasseAbstraite {
 
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
-        System.out.println("1- Créer un nouvel attribut");
+        System.out.println("1- Creer un nouvel attribut");
         System.out.println("2- Voir les attributs existants");
         System.out.println("3- Modifier les attributs existants");
         System.out.println("4- Supprimer un attribut existant");
-        System.out.println("5- Créer une nouvelle méthode");
-        System.out.println("6- Voir les méthodes existantes");
-        System.out.println("7- Modifier les méthodes existantes");
-        System.out.println("8- Supprimer une méthode existante");
+        System.out.println("5- Creer une nouvelle methode");
+        System.out.println("6- Voir les methodes existantes");
+        System.out.println("7- Modifier les methodes existantes");
+        System.out.println("8- Supprimer une methode existante");
         System.out.println("9- Renommer la classe");//TODO
-        System.out.println("9- Rendre la classe abstraite");//TODO
+        System.out.println("10- Rendre la classe abstraite");//TODO
 
     }
     private void creerNouvelAttribut(){
-        System.out.println("Création d'un nouvel attribut");
-        System.out.println("Donner un nom à votre attribut");
+        System.out.println("Creation d'un nouvel attribut");
+        System.out.println("Donner un nom a votre attribut");
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
         Attribut a = new Attribut(str);
