@@ -161,7 +161,7 @@ public class DiagrammeClasse {
     public Association choixAssociation(Scanner sc){
         System.out.println("** Choix d'une Association **");
         for (int i = 0; i< listeAssociations.size(); i++){
-            System.out.print(i + " - " + listeAssociations.get(i).getName() );
+            System.out.print(i + " - " + listeAssociations.get(i).getNom() );
         }
         int choix;
         do{
