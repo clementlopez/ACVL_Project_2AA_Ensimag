@@ -8,13 +8,11 @@ public class Attribut {
         this.nom = nom;
     }
 
-    public void menu() {
+    public void menu(Scanner sc) {
     	int choix = -1;
-    	Scanner sc = new Scanner(System.in);
     	while(choix!=0){
 	        afficherOptionsMenu();
 	        choix = sc.nextInt();
-	       // sc.nextLine();
 	        switch (choix) {
 	            case 1:
 	                System.out.println("Vous avez saisi : choix 1");
@@ -36,7 +34,6 @@ public class Attribut {
     }
     private void afficherOptionsMenu() {
         System.out.println("** Menu Attribut **");
-
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
         System.out.println("1- Rennomer l'attribut");

@@ -39,7 +39,7 @@ public class DiagrammeClasse {
 	                break;
 	            case 5:
 	                System.out.println("Vous avez saisi : choix 5");
-	                creerNouvelleAssociation();
+	                creerNouvelleAssociation(sc);
 	                break;
 	            case 6:
 	                System.out.println("Vous avez saisi : choix 6");
@@ -47,7 +47,7 @@ public class DiagrammeClasse {
 	                break;
 	            case 7:
 	                System.out.println("Vous avez saisi : choix 7");
-	                choixAssociation().menu();
+	                choixAssociation(sc).menu(sc);
 	                break;
 	            case 8:
 	                System.out.println("Vous avez saisi : choix 8");
@@ -80,17 +80,17 @@ public class DiagrammeClasse {
         c.menu(); //ça devrait peut être pas être là
     }
 
-    private void creerNouvelleAssociation(){
+    private void creerNouvelleAssociation(Scanner sc){
         if(listeClasses.size()>=1){
             System.out.println("** Creation d'un association de classes **");
             System.out.println("Les associations non binaires ne sont pas implementees"); //todo
             System.out.println("Choissisez la classe d'origine");
-            ClasseAbstraite co = choixClasse();
+            ClasseAbstraite co = choixClasse(sc);
             System.out.println("Choissisez la classe d'arrivee de l'association");
-            ClasseAbstraite ce = choixClasse();
+            ClasseAbstraite ce = choixClasse(sc);
             System.out.println("Choissisez la classe d'origine");
             Association a = new Association(co,ce);
-            a.menu();
+            a.menu(sc);
         }else {
             System.out.println("Vous devez d'abord creer une classe");
         }
@@ -158,13 +158,12 @@ public class DiagrammeClasse {
         return listeClasses.get(choix);
     }
 
-    public Association choixAssociation(){
+    public Association choixAssociation(Scanner sc){
         System.out.println("** Choix d'une Association **");
         for (int i = 0; i< listeAssociations.size(); i++){
             System.out.print(i + " - " + listeAssociations.get(i).getName() );
         }
         int choix;
-        Scanner sc = new Scanner(System.in);
         do{
             System.out.println("Lequel voulez vous choisir ?");
 

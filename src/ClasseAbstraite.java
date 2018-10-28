@@ -33,7 +33,7 @@ public class ClasseAbstraite {
 	        switch (choix) {
 	            case 1:
 	                System.out.println("Vous avez saisi : choix 1");
-	                creerNouvelAttribut();
+	                creerNouvelAttribut(sc);
 	                break;
 	            case 2:
 	                System.out.println("Vous avez saisi : choix 2");
@@ -41,7 +41,7 @@ public class ClasseAbstraite {
 	                break;
 	            case 3:
 	                System.out.println("Vous avez saisi : choix 3");
-	                choixAttribut().menu();
+	                choixAttribut(sc).menu(sc);
 	                break;
 	            case 4:
 	                System.out.println("Vous avez saisi : choix 4");
@@ -61,12 +61,8 @@ public class ClasseAbstraite {
 	                break;
 	            case 9:
 	                System.out.println("Vous avez saisi : choix 9");
-	                System.out.println("Comment voulez vous appeler cet attribut");
-	                String str = "";
-	                while(str.equals("")){
-	                	str = sc.nextLine();
-	                }
-	                setNom(str);
+	                System.out.println("Comment voulez vous appeler cette Classe");
+	                renommer(sc);
 	                break;
 	            default:
 	        }
@@ -89,37 +85,40 @@ public class ClasseAbstraite {
         System.out.println("10- Rendre la classe abstraite");//TODO
 
     }
-    private void creerNouvelAttribut(){
+    private void creerNouvelAttribut(Scanner sc){
         System.out.println("Creation d'un nouvel attribut");
         System.out.println("Donner un nom a votre attribut");
-        Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
         Attribut a = new Attribut(str);
         this.listeAttributs.add(a);
-        a.menu(); //todo ça devrait peut être pas être là
+        a.menu(sc); //todo ça devrait peut être pas être là
     }
 
-    public Attribut choixAttribut(){
+    public Attribut choixAttribut(Scanner sc){
         System.out.println("** Choix d'une Classe **");
         for (int i=0; i<listeAttributs.size(); i++){
             System.out.print(i + " - " + listeAttributs.get(i).getNom() );
         }
         int choix;
-        Scanner sc = new Scanner(System.in);
         do{
             System.out.println("Lequel voulez vous choisir ?");
 
             choix = sc.nextInt();
         }while(choix > listeAttributs.size());
         System.out.println("Vous avez choisi l'attribut " + listeAttributs.get(choix).getNom());
-
         return listeAttributs.get(choix);
     }
     public void afficherAttributs () {
         System.out.println("** Attributs de la  Classes"+ this.getNom() +"**");
         //TODO
     }
-
+    private void renommer(Scanner sc){
+    	String str = "";
+        while(str.equals("")){
+        	str = sc.nextLine();
+        }
+        setNom(str);
+    }
     public String getNom() {
         return nom;
     }
