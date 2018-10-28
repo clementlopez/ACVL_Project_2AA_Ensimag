@@ -9,6 +9,7 @@ public class Parametre {
 		super();
 		this.nom = nom;
 	}
+<<<<<<< 44d9f28bc18636f84e04cedf95ed64c54ff5821c
 	public void menu(Scanner sc) {
 		int choix = -1;
     	while(choix!=0){
@@ -34,6 +35,33 @@ public class Parametre {
 				default:
 			}
     	}
+=======
+	public void menu() {
+
+		afficherOptionsMenu();
+
+		int choix;
+		Scanner sc = new Scanner(System.in);
+		choix = Integer.parseInt(sc.nextLine());
+		switch (choix) {
+			case 1:
+				System.out.println("Vous avez saisi : choix 1");
+				System.out.println("Comment voulez vous appeler ce parametre");
+				String str;
+				str = sc.nextLine();
+				setNom(str);
+				break;
+			case 2:
+				System.out.println("Vous avez saisi : choix 2");
+				//TODO
+				break;
+			case 3:
+				System.out.println("Vous avez saisi : choix 3");
+				//TODO attention, defini automatiquement le type
+				break;
+			default:
+		}
+>>>>>>> association while, suite menu
 	}
 	private void afficherOptionsMenu() {
 		System.out.println("** Menu Parametre **");

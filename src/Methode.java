@@ -11,46 +11,48 @@ public class Methode {
 		this.nom = nom;
 		listeParametres = new ArrayList<>();
 	}
+
 	public void menu(Scanner sc) {
 		int choix = -1;
-    	while(choix!=0){
+		while (choix != 0) {
 			afficherOptionsMenu();
-			choix = sc.nextInt();
-	
+			choix = Integer.parseInt(sc.nextLine());
+
 			switch (choix) {
-	
-				case 1:
-					System.out.println("Vous avez saisi : choix 1");
-					creerNouveauParametre(sc);
-					break;
-				case 2:
-					System.out.println("Vous avez saisi : choix 2");
-					afficherParametres();
-					break;
-				case 3:
-					System.out.println("Vous avez saisi : choix 3");
-					choixParametre(sc).menu(sc);
-					break;
-				case 4:
-					System.out.println("Vous avez saisi : choix 4");
-					//TODO
-					break;
-				case 5:
-					System.out.println("Vous avez saisi : choix 5");
-					break;
-				case 6:
-					System.out.println("Vous avez saisi : choix 6");
-					break;
-				case 7:
-					System.out.println("Vous avez saisi : choix 7");
-					break;
-				case 8:
-					System.out.println("Vous avez saisi : choix 8");
-					break;
-				default:
+
+			case 1:
+				System.out.println("Vous avez saisi : choix 1");
+				creerNouveauParametre(sc);
+				break;
+			case 2:
+				System.out.println("Vous avez saisi : choix 2");
+				afficherParametres();
+				break;
+			case 3:
+				System.out.println("Vous avez saisi : choix 3");
+				choixParametre(sc).menu(sc);
+				break;
+			case 4:
+				System.out.println("Vous avez saisi : choix 4");
+				// TODO
+				break;
+			case 5:
+				System.out.println("Vous avez saisi : choix 5");
+				break;
+			case 6:
+				System.out.println("Vous avez saisi : choix 6");
+				break;
+			case 7:
+				System.out.println("Vous avez saisi : choix 7");
+				break;
+			case 8:
+				System.out.println("Vous avez saisi : choix 8");
+				break;
+			default:
 			}
-    	}
+		}
 	}
+
 	private void afficherOptionsMenu() {
 		System.out.println("** Menu Méthode **");
 
@@ -63,66 +65,72 @@ public class Methode {
 		System.out.println("5- Ajouter un type de retour");
 		System.out.println("6- Modifier le type de retour existant");
 		System.out.println("7- Supprimer le type de retour existant");
-		System.out.println("8- Renommer la méthode");//TODO
+		System.out.println("8- Renommer la méthode");// TODO
 	}
-	private void creerNouveauParametre(Scanner sc){
+
+	private void creerNouveauParametre(Scanner sc) {
 		System.out.println("Donner un nom à votre attribut");
 		String str = sc.nextLine();
 		Parametre p = new Parametre(str);
 		this.listeParametres.add(p);
-		p.menu(sc); //todo ça devrait peut être pas être là
+		p.menu(sc); // todo ça devrait peut être pas être là
 	}
 
-	public Parametre choixParametre(Scanner sc){
+	public Parametre choixParametre(Scanner sc) {
 		System.out.println("** Choix d'une Classe **");
-		for (int i=0; i<listeParametres.size(); i++){
-			System.out.print(i + " - " + listeParametres.get(i).getNom() );
+		for (int i = 0; i < listeParametres.size(); i++) {
+			System.out.print(i + " - " + listeParametres.get(i).getNom());
 		}
 		int choix;
-		do{
+		do {
 			System.out.println("Lequel voulez vous choisir ?");
 
 			choix = sc.nextInt();
-		}while(choix > listeParametres.size());
+		} while (choix > listeParametres.size());
 		System.out.println("Vous avez choisi le parametre " + listeParametres.get(choix).getNom());
 
 		return listeParametres.get(choix);
 	}
 
-	public void afficherParametres () {
-		System.out.println("** Parametres de la  Methode"+ this.getNom() +"**");
-		//TODO
+	public void afficherParametres() {
+		System.out.println("** Parametres de la  Methode" + this.getNom() + "**");
+		// TODO
 	}
-
 
 	public String getNom() {
 		return nom;
 	}
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 	public String getTypeRetour() {
 		return typeRetour;
 	}
+
 	public void setTypeRetour(String typeRetour) {
 		this.typeRetour = typeRetour;
 	}
+
 	public List<Parametre> getListeParametres() {
 		return listeParametres;
 	}
+
 	public void setListeParametres(List<Parametre> listeParametres) {
 		this.listeParametres = new ArrayList<Parametre>(listeParametres);
 	}
-	public void afficher(){
-    	System.out.print("\t\t\t\t " + getNom() + "(");
-    	for(int i=0; i<listeParametres.size(); i++){
-    		System.out.print(listeParametres.get(i).getNom());
-    		if(i<listeParametres.size()-1){
-    			System.out.print(", ");
-    		}
-    	}
-    	if(!typeRetour.equals("non defini")){
-    		System.out.println(" : " + typeRetour);
-    	}
-    }	
+
+	public void afficher() {
+		System.out.print("\t\t\t\t " + getNom() + "(");
+		for (int i = 0; i < listeParametres.size(); i++) {
+			System.out.print(listeParametres.get(i).getNom());
+			if (i < listeParametres.size() - 1) {
+				System.out.print(", ");
+			}
+		}
+		if (!typeRetour.equals("non defini")) {
+			System.out.println(" : " + typeRetour);
+		}
+	}
 }

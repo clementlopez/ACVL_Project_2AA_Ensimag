@@ -17,8 +17,7 @@ public class DiagrammeClasse {
     	int choix = -1;
         while(choix!=0){
         	afficherOptionsMenu();
-	        choix = sc.nextInt();
-	
+            choix = Integer.parseInt(sc.nextLine());
 	        switch (choix){
 	            case 1:
 	                System.out.println("Vous avez saisi : choix 1");
