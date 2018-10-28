@@ -116,6 +116,16 @@ public class Methode {
 	public void setListeParametres(List<Parametre> listeParametres) {
 		this.listeParametres = new ArrayList<Parametre>(listeParametres);
 	}
-	
-	
+	public void afficher(){
+    	System.out.print("\t\t\t\t " + getNom() + "(");
+    	for(int i=0; i<listeParametres.size(); i++){
+    		System.out.print(listeParametres.get(i).getNom());
+    		if(i<listeParametres.size()-1){
+    			System.out.print(", ");
+    		}
+    	}
+    	if(!typeRetour.equals("non defini")){
+    		System.out.println(" : " + typeRetour);
+    	}
+    }	
 }

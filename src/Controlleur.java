@@ -11,10 +11,9 @@ public class Controlleur {
     }
     public void play(){
     	int choix = -1;
-    	Scanner sc = null;
+    	Scanner sc = new Scanner(System.in);
     	while(choix!=0){
 	       afficherOptionsMenu();
-	        sc = new Scanner(System.in);
 	        choix = sc.nextInt();
 	       
 	        switch (choix){
@@ -32,12 +31,12 @@ public class Controlleur {
 	                break;
 	            case 4:
 	                System.out.println("Vous avez saisi : choix 4");
-                    System.out.println("Non implementes");
-                    //TODO
+	                supprimerDiagrammeClasse(sc);
 	                break;
 	            default:
     		}
     	}
+    	sc.close();
     }
     private void crerNouveauDiagrammeDeClasse(Scanner sc){
         System.out.println("** Creation d'un diagramme de classe **");
@@ -64,7 +63,7 @@ public class Controlleur {
     public void afficherDiagrammes(){
         System.out.println("** Diagrammes de classe **");
         for (int i=0; i<listeDiagrammeClasse.size(); i++){
-            listeDiagrammeClasse.get(i).afficher();
+        	listeDiagrammeClasse.get(i).afficher();
         }
     }
     
@@ -78,8 +77,11 @@ public class Controlleur {
             System.out.println("Lequel voulez vous choisir ?");
             choix = sc.nextInt();
         }while(choix > listeDiagrammeClasse.size());
-
         return listeDiagrammeClasse.get(choix);
-
+    }
+    private void supprimerDiagrammeClasse(Scanner sc){
+    	DiagrammeClasse diag = choixDiagrammeDeClasse(sc);
+    	listeDiagrammeClasse.remove(diag);
+    	System.out.println("Le diagramme " + diag.getNom() + " a bien été supprimé");
     }
 }

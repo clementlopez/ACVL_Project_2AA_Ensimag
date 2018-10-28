@@ -34,8 +34,7 @@ public class DiagrammeClasse {
 	                break;
 	            case 4:
 	                System.out.println("Vous avez saisi : choix 4");
-	                System.out.println("Non implementes");
-	                //TODO
+	                supprimerClasse(sc);
 	                break;
 	            case 5:
 	                System.out.println("Vous avez saisi : choix 5");
@@ -51,8 +50,7 @@ public class DiagrammeClasse {
 	                break;
 	            case 8:
 	                System.out.println("Vous avez saisi : choix 8");
-	                System.out.println("Non implementes");
-	                //TODO
+	                supprimerAssociation(sc);
 	                break;
 	            case 9:
 	                System.out.println("Vous avez saisi : choix 9");
@@ -62,7 +60,6 @@ public class DiagrammeClasse {
 	            case 10:
 	                System.out.println("Vous avez saisi : choix 10");
 	                renommer(sc);
-	                //TODO
 	                break;
 	            default:
 	        }
@@ -109,7 +106,7 @@ public class DiagrammeClasse {
         System.out.println("7- Modifier les associations existantes");
         System.out.println("8- Supprimer une association existante");
         System.out.println("9- Gerer les relations d'heritage");//TODO
-        System.out.println("10- Renommer le diagramme de classe");//TODO
+        System.out.println("10- Renommer le diagramme de classe");
 
     }
 
@@ -130,8 +127,15 @@ public class DiagrammeClasse {
     }
 	
     public void afficher () {
-        System.out.println("** Diagramme de Classes"+ this.getNom() +"**");
-        //TODO
+        System.out.println("** Diagramme de Classes "+ this.getNom() +" **");
+        System.out.println("\t** Liste des Classes **");
+        for(ClasseAbstraite classe : listeClasses){
+        	classe.afficher();
+        }
+        System.out.println("\t** Liste des Associations **");
+        for(Association asso : listeAssociations){
+        	asso.afficher();
+        }
     }
 
     public void afficherClasses () {
@@ -173,5 +177,22 @@ public class DiagrammeClasse {
         return listeAssociations.get(choix);
     }
 
+    private void supprimerClasse(Scanner sc){
+    	//TODO completer pour supprimer attribut du type de la classe
+    	ClasseAbstraite classe = choixClasse(sc);
+    	for(Association asso : listeAssociations){
+    		if(asso.origine.equals(classe)||asso.extremite.equals(classe)){
+    			listeAssociations.remove(asso);
+    		}
+    	}
+    	listeClasses.remove(classe);
+    	System.out.println("La classe " + classe.getNom() + " et toutes ses associations associées ont bien été supprimées");
+    }
+    
+    private void supprimerAssociation(Scanner sc){
+    	Association asso = choixAssociation(sc);
+    	listeAssociations.remove(asso);
+    	System.out.println("L'association " + asso.getNom() + " a bien été supprimée");
+    }
 }
 

@@ -25,9 +25,6 @@ public class Attribut {
 	            case 3:
 	                System.out.println("Vous avez saisi : choix 3");
 	                break;
-	            case 4:
-	                System.out.println("Vous avez saisi : choix 4");
-	                break;
 	          default:
 	        }
     	}
@@ -55,5 +52,16 @@ public class Attribut {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+    public TypeAttribut getType() {
+		return type;
+	}
+
+	public void setType(TypeAttribut type) {
+		this.type = type;
+	}
+
+	public void afficher(){
+    	System.out.print("\t\t\t\t " + getType() + " " + getNom());
     }
 }

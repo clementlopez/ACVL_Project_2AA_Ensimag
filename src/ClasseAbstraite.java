@@ -6,6 +6,7 @@ public class ClasseAbstraite {
 
     private String nom;
     private List<Attribut> listeAttributs;
+    private List<Methode> listeMethodes;
 
     public ClasseAbstraite(String mName) {
         this.nom = mName;
@@ -112,6 +113,7 @@ public class ClasseAbstraite {
         System.out.println("** Attributs de la  Classes"+ this.getNom() +"**");
         //TODO
     }
+    
     private void renommer(Scanner sc){
     	String str = "";
         while(str.equals("")){
@@ -119,7 +121,20 @@ public class ClasseAbstraite {
         }
         setNom(str);
     }
+    
     public String getNom() {
         return nom;
+    }
+    
+    public void afficher(){
+    	System.out.println("\t\t- " + getNom());
+    	System.out.println("\t\t\tListe des attributs");
+    	for(Attribut att : listeAttributs){
+    		att.afficher();
+    	}
+    	System.out.println("\t\t\tListe des methodes");
+    	for(Methode meth : listeMethodes){
+    		meth.afficher();
+    	}
     }
 }

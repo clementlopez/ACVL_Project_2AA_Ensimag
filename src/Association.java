@@ -13,6 +13,14 @@ public class Association {
 		this.nom = nom;
 	}
 
+	public ClasseAbstraite getOrigine() {
+		return origine;
+	}
+
+	public ClasseAbstraite getExtremite() {
+		return extremite;
+	}
+
 	public Association(ClasseAbstraite mOrigine, ClasseAbstraite mExtremite) {
         this.nom = "Anonyme";
         this.origine = mOrigine;
@@ -50,11 +58,18 @@ public class Association {
         System.out.println("2- Modifier la navigabilite de l'association");
         System.out.println("3- Modifier la multiplicite de l'association");
     }
+    
     private void renommer(Scanner sc){
     	String str = "";
         while(str.equals("")){
         	str = sc.nextLine();
         }
         setNom(str);
+    }
+    
+    public void afficher(){
+    	System.out.println("\t\t- " + getNom());
+    	System.out.println("\t\t\tEntre " + getOrigine().getNom());
+    	System.out.println("\t\t\tEt " + getExtremite().getNom());
     }
 }
