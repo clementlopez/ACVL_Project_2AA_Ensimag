@@ -8,50 +8,50 @@ public class Controlleur {
     public Controlleur() {
         listeDiagrammeClasse = new ArrayList<>();
     }
-    
-    public void play(){
-    	int choix = -1;
-    	Scanner sc = new Scanner(System.in);
-    	while(choix!=0){
-	       afficherOptionsMenu();
-	        choix = sc.nextInt();
-	       
-	        switch (choix){
-	        	case 1:
-	                System.out.println("Vous avez saisi : choix 1");
-	                crerNouveauDiagrammeDeClasse(sc);
-	                break;
-	            case 2:
-	                System.out.println("Vous avez saisi : choix 2");
-	                afficherDiagrammes();
-	                break;
-	            case 3:
-	            	System.out.println("Vous avez saisi : choix 3");
-	                choixDiagrammeDeClasse(sc).menu(sc);
-	                break;
-	            case 4:
-	                System.out.println("Vous avez saisi : choix 4");
-	                supprimerDiagrammeClasse(sc);
-	                break;
-	            default:
-    		}
-    	}
-    	sc.close();
+
+    public void play() {
+        int choix = -1;
+        Scanner sc = new Scanner(System.in);
+        while (choix != 0) {
+            afficherOptionsMenu();
+            choix = Integer.parseInt(sc.nextLine());
+
+            switch (choix) {
+            case 1:
+                System.out.println("Vous avez saisi : choix 1");
+                crerNouveauDiagrammeDeClasse(sc);
+                break;
+            case 2:
+                System.out.println("Vous avez saisi : choix 2");
+                afficherDiagrammes();
+                break;
+            case 3:
+                System.out.println("Vous avez saisi : choix 3");
+                choixDiagrammeDeClasse(sc).menu(sc);
+                break;
+            case 4:
+                System.out.println("Vous avez saisi : choix 4");
+                supprimerDiagrammeClasse(sc);
+                break;
+            default:
+            }
+        }
+        sc.close();
     }
-    
-    private void crerNouveauDiagrammeDeClasse(Scanner sc){
+
+    private void crerNouveauDiagrammeDeClasse(Scanner sc) {
         System.out.println("** Creation d'un diagramme de classe **");
         System.out.println("Donner un nom a votre diagramme de classe");
-    	String str = "";
-        while(str.equals("")){
-        	str = sc.nextLine();
+        String str = "";
+        while (str.equals("")) {
+            str = sc.nextLine();
         }
         DiagrammeClasse d = new DiagrammeClasse(str);
         this.listeDiagrammeClasse.add(d);
         d.menu(sc);
     }
-    
-    private void afficherOptionsMenu(){
+
+    private void afficherOptionsMenu() {
         System.out.println("** Menu Diagramme de Classe **");
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
@@ -60,29 +60,30 @@ public class Controlleur {
         System.out.println("3- Modifier les diagrammes de classes existants");
         System.out.println("4- Supprimer un diagramme de classes existant");
     }
-    
-    public void afficherDiagrammes(){
+
+    public void afficherDiagrammes() {
         System.out.println("** Diagrammes de classe **");
-        for (int i=0; i<listeDiagrammeClasse.size(); i++){
-        	listeDiagrammeClasse.get(i).afficher();
+        for (int i = 0; i < listeDiagrammeClasse.size(); i++) {
+            listeDiagrammeClasse.get(i).afficher();
         }
     }
-    
-    public DiagrammeClasse choixDiagrammeDeClasse(Scanner sc){
+
+    public DiagrammeClasse choixDiagrammeDeClasse(Scanner sc) {
         System.out.println("** Choix d'un Diagramme de Classe **");
-        for (int i=0; i<listeDiagrammeClasse.size(); i++){
-            System.out.println(i + " - " + listeDiagrammeClasse.get(i).getNom() );
+        for (int i = 0; i < listeDiagrammeClasse.size(); i++) {
+            System.out.println(i + " - " + listeDiagrammeClasse.get(i).getNom());
         }
         int choix;
-        do{
+        do {
             System.out.println("Lequel voulez vous choisir ?");
-            choix = sc.nextInt();
-        }while(choix > listeDiagrammeClasse.size());
+            choix = Integer.parseInt(sc.nextLine());
+        } while (choix > listeDiagrammeClasse.size());
         return listeDiagrammeClasse.get(choix);
     }
-    private void supprimerDiagrammeClasse(Scanner sc){
-    	DiagrammeClasse diag = choixDiagrammeDeClasse(sc);
-    	listeDiagrammeClasse.remove(diag);
-    	System.out.println("Le diagramme " + diag.getNom() + " a bien été supprimé");
+
+    private void supprimerDiagrammeClasse(Scanner sc) {
+        DiagrammeClasse diag = choixDiagrammeDeClasse(sc);
+        listeDiagrammeClasse.remove(diag);
+        System.out.println("Le diagramme " + diag.getNom() + " a bien ï¿½tï¿½ supprimï¿½");
     }
 }

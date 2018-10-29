@@ -19,36 +19,36 @@ public class Methode {
 			choix = Integer.parseInt(sc.nextLine());
 
 			switch (choix) {
-				case 1:
-					System.out.println("Vous avez saisi : choix 1");
-					creerNouveauParametre(sc);
-					break;
-				case 2:
-					System.out.println("Vous avez saisi : choix 2");
-					afficherParametres();
-					break;
-				case 3:
-					System.out.println("Vous avez saisi : choix 3");
-					choixParametre(sc).menu(sc);
-					break;
-				case 4:
-					System.out.println("Vous avez saisi : choix 4");
-					supprimerParametre(sc);
-					break;
-				case 5:
-					System.out.println("Vous avez saisi : choix 5");//TODO
-					break;
-				case 6:
-					System.out.println("Vous avez saisi : choix 6");
-					break;
-				case 7:
-					System.out.println("Vous avez saisi : choix 7");
-					break;
-				case 8:
-					System.out.println("Vous avez saisi : choix 8");
-					renommer(sc);
-					break;
-				default:
+			case 1:
+				System.out.println("Vous avez saisi : choix 1");
+				creerNouveauParametre(sc);
+				break;
+			case 2:
+				System.out.println("Vous avez saisi : choix 2");
+				afficherParametres();
+				break;
+			case 3:
+				System.out.println("Vous avez saisi : choix 3");
+				choixParametre(sc).menu(sc);
+				break;
+			case 4:
+				System.out.println("Vous avez saisi : choix 4");
+				supprimerParametre(sc);
+				break;
+			case 5:
+				System.out.println("Vous avez saisi : choix 5");// TODO
+				break;
+			case 6:
+				System.out.println("Vous avez saisi : choix 6");
+				break;
+			case 7:
+				System.out.println("Vous avez saisi : choix 7");
+				break;
+			case 8:
+				System.out.println("Vous avez saisi : choix 8");
+				renommer(sc);
+				break;
+			default:
 			}
 		}
 	}
@@ -67,7 +67,8 @@ public class Methode {
 		System.out.println("7- Supprimer le type de retour existant");
 		System.out.println("8- Renommer la methode");
 	}
-	private void creerNouveauParametre(Scanner sc){
+
+	private void creerNouveauParametre(Scanner sc) {
 		System.out.println("Donner un nom a votre parametre");
 		String str = sc.nextLine();
 		Parametre p = new Parametre(str);
@@ -75,16 +76,16 @@ public class Methode {
 		p.menu(sc);
 	}
 
-	public Parametre choixParametre(Scanner sc){
+	public Parametre choixParametre(Scanner sc) {
 		System.out.println("** Choix d'un Parametre **");
-		for (int i=0; i<listeParametres.size(); i++){
-			System.out.print(i + " - " + listeParametres.get(i).getNom() );
+		for (int i = 0; i < listeParametres.size(); i++) {
+			System.out.print(i + " - " + listeParametres.get(i).getNom());
 		}
 		int choix;
 		do {
 			System.out.println("Lequel voulez vous choisir ?");
 
-			choix = sc.nextInt();
+			choix = Integer.parseInt(sc.nextLine());
 		} while (choix > listeParametres.size());
 		System.out.println("Vous avez choisi le parametre " + listeParametres.get(choix).getNom());
 
@@ -94,8 +95,8 @@ public class Methode {
 	public void afficherParametres() {
 		System.out.println("** Parametres de la  Methode " + this.getNom() + " **");
 		for (Parametre param : listeParametres) {
-            param.afficher();
-        }
+			param.afficher();
+		}
 	}
 
 	public String getNom() {
@@ -121,12 +122,12 @@ public class Methode {
 	public void setListeParametres(List<Parametre> listeParametres) {
 		this.listeParametres = new ArrayList<Parametre>(listeParametres);
 	}
-	
-	private void supprimerParametre(Scanner sc){
-    	Parametre param = choixParametre(sc);
-    	listeParametres.remove(param);
-    	System.out.println("Le parametre " + param.getNom() + " a bien été supprimé");
-    }
+
+	private void supprimerParametre(Scanner sc) {
+		Parametre param = choixParametre(sc);
+		listeParametres.remove(param);
+		System.out.println("Le parametre " + param.getNom() + " a bien ï¿½tï¿½ supprimï¿½");
+	}
 
 	public void afficher() {
 		System.out.print("\t\t\t\t " + getNom() + "(");
@@ -140,12 +141,12 @@ public class Methode {
 			System.out.println(" : " + typeRetour);
 		}
 	}
-	
+
 	private void renommer(Scanner sc) {
-        String str = "";
-        while (str.equals("")) {
-            str = sc.nextLine();
-        }
-        setNom(str);
-    }
+		String str = "";
+		while (str.equals("")) {
+			str = sc.nextLine();
+		}
+		setNom(str);
+	}
 }

@@ -12,7 +12,8 @@ public class Attribut {
     	int choix = -1;
     	while(choix!=0){
 	        afficherOptionsMenu();
-            choix = Integer.parseInt(sc.nextLine());	        switch (choix) {
+            choix = Integer.parseInt(sc.nextLine());
+            switch (choix) {
 	            case 1:
 	                System.out.println("Vous avez saisi : choix 1");
 	                System.out.println("Comment voulez vous appeler cet attribut");

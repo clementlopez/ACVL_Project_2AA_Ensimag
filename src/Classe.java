@@ -28,62 +28,62 @@ public class Classe {
     }
 
     public boolean isEstAbstraite() {
-		return estAbstraite;
-	}
+        return estAbstraite;
+    }
 
-	public void setEstAbstraite(boolean estAbstraite) {
-		this.estAbstraite = estAbstraite;
-	}
+    public void setEstAbstraite(boolean estAbstraite) {
+        this.estAbstraite = estAbstraite;
+    }
 
-	public void menu(Scanner sc) {
-    	int choix = -1;
-        while(choix!=0){
-        	afficherOptionsMenu();
-	        choix = sc.nextInt();
-	        switch (choix) {
-	            case 1:
-	                System.out.println("Vous avez saisi : choix 1");
-	                creerNouvelAttribut(sc);
-	                break;
-	            case 2:
-	                System.out.println("Vous avez saisi : choix 2");
-	                afficherAttributs();
-	                break;
-	            case 3:
-	                System.out.println("Vous avez saisi : choix 3");
-	                choixAttribut(sc).menu(sc);
-	                break;
-	            case 4:
-	                System.out.println("Vous avez saisi : choix 4");
-	                supprimerAttribut(sc);
-	                break;
-	            case 5:
-	                System.out.println("Vous avez saisi : choix 5");
-	                creerNouvelleMethode(sc);
-	                break;
-	            case 6:
-	                System.out.println("Vous avez saisi : choix 6");
-	                afficherMethodes();
-	                break;
-	            case 7:
-	                System.out.println("Vous avez saisi : choix 7");
-	                choixMethode(sc).menu(sc);
-	                break;
-	            case 8:
-	                System.out.println("Vous avez saisi : choix 8");
-	                supprimerMethode(sc);
-	                break;
-	            case 9:
-	                System.out.println("Vous avez saisi : choix 9");
-	                System.out.println("Comment voulez vous appeler cette Classe");
-	                renommer(sc);
-	                break;
-	            case 10:
-	                System.out.println("Vous avez saisi : choix 10");
-	                changeAbstrait();
-	                break;
-	            default:
-	        }
+    public void menu(Scanner sc) {
+        int choix = -1;
+        while (choix != 0) {
+            afficherOptionsMenu();
+            choix = Integer.parseInt(sc.nextLine());
+            switch (choix) {
+            case 1:
+                System.out.println("Vous avez saisi : choix 1");
+                creerNouvelAttribut(sc);
+                break;
+            case 2:
+                System.out.println("Vous avez saisi : choix 2");
+                afficherAttributs();
+                break;
+            case 3:
+                System.out.println("Vous avez saisi : choix 3");
+                choixAttribut(sc).menu(sc);
+                break;
+            case 4:
+                System.out.println("Vous avez saisi : choix 4");
+                supprimerAttribut(sc);
+                break;
+            case 5:
+                System.out.println("Vous avez saisi : choix 5");
+                creerNouvelleMethode(sc);
+                break;
+            case 6:
+                System.out.println("Vous avez saisi : choix 6");
+                afficherMethodes();
+                break;
+            case 7:
+                System.out.println("Vous avez saisi : choix 7");
+                choixMethode(sc).menu(sc);
+                break;
+            case 8:
+                System.out.println("Vous avez saisi : choix 8");
+                supprimerMethode(sc);
+                break;
+            case 9:
+                System.out.println("Vous avez saisi : choix 9");
+                System.out.println("Comment voulez vous appeler cette Classe");
+                renommer(sc);
+                break;
+            case 10:
+                System.out.println("Vous avez saisi : choix 10");
+                changeAbstrait();
+                break;
+            default:
+            }
         }
     }
 
@@ -101,11 +101,10 @@ public class Classe {
         System.out.println("7- Modifier les methodes existantes");
         System.out.println("8- Supprimer une methode existante");
         System.out.println("9- Renommer la classe");
-        if(isEstAbstraite()) {
-        	System.out.println("10- Rendre la classe non-abstraite");
-        }
-        else {
-        	System.out.println("10- Rendre la classe abstraite");
+        if (isEstAbstraite()) {
+            System.out.println("10- Rendre la classe non-abstraite");
+        } else {
+            System.out.println("10- Rendre la classe abstraite");
         }
     }
 
@@ -127,40 +126,40 @@ public class Classe {
         m.menu(sc); // todo Ã§a devrait peut Ãªtre pas Ãªtre lÃ 
     }
 
-    public Attribut choixAttribut(Scanner sc){
+    public Attribut choixAttribut(Scanner sc) {
         System.out.println("** Choix d'un Attribut **");
-        for (int i=0; i<listeAttributs.size(); i++){
-            System.out.print(i + " - " + listeAttributs.get(i).getNom() );
+        for (int i = 0; i < listeAttributs.size(); i++) {
+            System.out.print(i + " - " + listeAttributs.get(i).getNom());
         }
         int choix;
         do {
             System.out.println("Lequel voulez vous choisir ?");
 
-            choix = sc.nextInt();
+            choix = Integer.parseInt(sc.nextLine());
         } while (choix > listeAttributs.size());
         System.out.println("Vous avez choisi l'attribut " + listeAttributs.get(choix).getNom());
         return listeAttributs.get(choix);
     }
-    
-    public Methode choixMethode(Scanner sc){
+
+    public Methode choixMethode(Scanner sc) {
         System.out.println("** Choix d'une Methode **");
-        for (int i=0; i<listeMethodes.size(); i++){
-            System.out.print(i + " - " + listeMethodes.get(i).getNom() );
+        for (int i = 0; i < listeMethodes.size(); i++) {
+            System.out.print(i + " - " + listeMethodes.get(i).getNom());
         }
         int choix;
-        do{
+        do {
             System.out.println("Laquelle voulez vous choisir ?");
 
-            choix = sc.nextInt();
-        }while(choix > listeMethodes.size());
+            choix = Integer.parseInt(sc.nextLine());
+        } while (choix > listeMethodes.size());
         System.out.println("Vous avez choisi la methode " + listeMethodes.get(choix).getNom());
         return listeMethodes.get(choix);
     }
-    
-    public void afficherAttributs () {
-        System.out.println("** Attributs de la  Classe "+ this.getNom() +" **");
-        for(Attribut att : listeAttributs){
-        	att.afficher();
+
+    public void afficherAttributs() {
+        System.out.println("** Attributs de la  Classe " + this.getNom() + " **");
+        for (Attribut att : listeAttributs) {
+            att.afficher();
         }
     }
 
@@ -182,51 +181,50 @@ public class Classe {
     public String getNom() {
         return nom;
     }
-    
-    public void afficher(){
-    	System.out.println("\t\t- " + getNom());
-    	System.out.println("\t\t\tListe des attributs");
-    	for(Attribut att : listeAttributs){
-    		att.afficher();
-    	}
-    	System.out.println("\t\t\tListe des methodes");
-    	for(Methode meth : listeMethodes){
-    		meth.afficher();
-    	}
+
+    public void afficher() {
+        System.out.println("\t\t- " + getNom());
+        System.out.println("\t\t\tListe des attributs");
+        for (Attribut att : listeAttributs) {
+            att.afficher();
+        }
+        System.out.println("\t\t\tListe des methodes");
+        for (Methode meth : listeMethodes) {
+            meth.afficher();
+        }
     }
 
-	public void supprimerElementsEnRelationAvecClasse(Classe classe) {
-		for(Attribut att : listeAttributs){
-			if(att.getType().getNom().equals(classe.getNom())){
-				listeAttributs.remove(att);
-			}
-		}
-		for(Methode meth : listeMethodes){
-			if(meth.getTypeRetour().equals(classe.getNom())){
-				listeMethodes.remove(meth);
-			}
-		}
-	}
-	
-	private void changeAbstrait() {
-		setEstAbstraite(!isEstAbstraite());
-		if(isEstAbstraite()) {
-			System.out.println("La Classe " + getNom() + " est desormais abstraite");
-		}
-		else {
-			System.out.println("La Classe " + getNom() + " n'est plus abstraite");
-		}
-	}
-	
-	private void supprimerAttribut(Scanner sc){
-    	Attribut att = choixAttribut(sc);
-    	listeAttributs.remove(att);
-    	System.out.println("L'attribut " + att.getNom() + " a bien été supprimé");
+    public void supprimerElementsEnRelationAvecClasse(Classe classe) {
+        for (Attribut att : listeAttributs) {
+            if (att.getType().getNom().equals(classe.getNom())) {
+                listeAttributs.remove(att);
+            }
+        }
+        for (Methode meth : listeMethodes) {
+            if (meth.getTypeRetour().equals(classe.getNom())) {
+                listeMethodes.remove(meth);
+            }
+        }
     }
-	
-	private void supprimerMethode(Scanner sc){
-    	Methode meth = choixMethode(sc);
-    	listeMethodes.remove(meth);
-    	System.out.println("La methode " + meth.getNom() + " a bien été supprimée");
+
+    private void changeAbstrait() {
+        setEstAbstraite(!isEstAbstraite());
+        if (isEstAbstraite()) {
+            System.out.println("La Classe " + getNom() + " est desormais abstraite");
+        } else {
+            System.out.println("La Classe " + getNom() + " n'est plus abstraite");
+        }
+    }
+
+    private void supprimerAttribut(Scanner sc) {
+        Attribut att = choixAttribut(sc);
+        listeAttributs.remove(att);
+        System.out.println("L'attribut " + att.getNom() + " a bien ï¿½tï¿½ supprimï¿½");
+    }
+
+    private void supprimerMethode(Scanner sc) {
+        Methode meth = choixMethode(sc);
+        listeMethodes.remove(meth);
+        System.out.println("La methode " + meth.getNom() + " a bien ï¿½tï¿½ supprimï¿½e");
     }
 }
