@@ -225,7 +225,7 @@ public class Classe {
 
     public void supprimerElementsEnRelationAvecClasse(Classe classe) {
         for (Attribut att : listeAttributs) {
-            if (att.getType().getNom().equals(classe.getNom())) {
+            if (att.getType().equals(classe.getNom())) {
                 listeAttributs.remove(att);
             }
         }

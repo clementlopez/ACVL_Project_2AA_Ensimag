@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Attribut {
-	TypeAttribut type;
+	String type;
     String nom;
 
     public Attribut(String nom) {
@@ -60,11 +60,11 @@ public class Attribut {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    public TypeAttribut getType() {
+    public String getType() {
 		return type;
 	}
 
-	public void setType(TypeAttribut type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
