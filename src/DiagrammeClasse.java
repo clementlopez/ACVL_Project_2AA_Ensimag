@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class DiagrammeClasse {
     String nom;
-    List<ClasseAbstraite> listeClasses;
+    List<Classe> listeClasses;
     List<Association> listeAssociations;
 
     public DiagrammeClasse(String mName) {
@@ -82,9 +82,9 @@ public class DiagrammeClasse {
             System.out.println("** Creation d'un association de classes **");
             System.out.println("Les associations non binaires ne sont pas implementees"); //todo
             System.out.println("Choissisez la classe d'origine");
-            ClasseAbstraite co = choixClasse(sc);
+            Classe co = choixClasse(sc);
             System.out.println("Choissisez la classe d'arrivee de l'association");
-            ClasseAbstraite ce = choixClasse(sc);
+            Classe ce = choixClasse(sc);
             System.out.println("Choissisez la classe d'origine");
             Association a = new Association(co,ce);
             a.menu(sc);
@@ -129,7 +129,7 @@ public class DiagrammeClasse {
     public void afficher () {
         System.out.println("** Diagramme de Classes "+ this.getNom() +" **");
         System.out.println("\t** Liste des Classes **");
-        for(ClasseAbstraite classe : listeClasses){
+        for(Classe classe : listeClasses){
         	classe.afficher();
         }
         System.out.println("\t** Liste des Associations **");
@@ -140,7 +140,7 @@ public class DiagrammeClasse {
 
     public void afficherClasses () {
         System.out.println("** Classes du Diagramme de Classes"+ this.getNom() +"**");
-        for(ClasseAbstraite classe : listeClasses){
+        for(Classe classe : listeClasses){
         	classe.afficher();
         }
     }
@@ -151,7 +151,7 @@ public class DiagrammeClasse {
         }
     }
 
-    public ClasseAbstraite choixClasse(Scanner sc){
+    public Classe choixClasse(Scanner sc){
         System.out.println("** Choix d'une Classe **");
         for (int i=0; i<listeClasses.size(); i++){
             System.out.print(i + " - " + listeClasses.get(i).getNom() );
@@ -183,13 +183,13 @@ public class DiagrammeClasse {
 
     private void supprimerClasse(Scanner sc){
     	//TODO completer pour supprimer attribut du type de la classe
-    	ClasseAbstraite classe = choixClasse(sc);
+    	Classe classe = choixClasse(sc);
     	for(Association asso : listeAssociations){
     		if(asso.origine.equals(classe)||asso.extremite.equals(classe)){
     			listeAssociations.remove(asso);
     		}
     	}
-    	for(ClasseAbstraite cl : listeClasses){
+    	for(Classe cl : listeClasses){
     		cl.supprimerElementsEnRelationAvecClasse(classe);
     	}
     	listeClasses.remove(classe);

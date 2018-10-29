@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Association {
     private String nom;
-    ClasseAbstraite origine; //TOD a renemmoer, c'ets moche
-    ClasseAbstraite extremite;
+    Classe origine; //TOD a renemmoer, c'ets moche
+    Classe extremite;
 
     public String getNom() {
         return nom;
@@ -13,15 +13,15 @@ public class Association {
 		this.nom = nom;
 	}
 
-	public ClasseAbstraite getOrigine() {
+	public Classe getOrigine() {
 		return origine;
 	}
 
-	public ClasseAbstraite getExtremite() {
+	public Classe getExtremite() {
 		return extremite;
 	}
 
-	public Association(ClasseAbstraite mOrigine, ClasseAbstraite mExtremite) {
+	public Association(Classe mOrigine, Classe mExtremite) {
         this.nom = "Anonyme";
         this.origine = mOrigine;
         this.extremite = mExtremite;
