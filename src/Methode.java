@@ -33,7 +33,7 @@ public class Methode {
 					break;
 				case 4:
 					System.out.println("Vous avez saisi : choix 4");
-					//TODO
+					supprimerParametre(sc);
 					break;
 				case 5:
 					System.out.println("Vous avez saisi : choix 5");
@@ -52,29 +52,29 @@ public class Methode {
     	}
 	}
 	private void afficherOptionsMenu() {
-		System.out.println("** Menu Méthode **");
+		System.out.println("** Menu Methode **");
 
 		System.out.println("Que voulez vous faire ?");
 		System.out.println("0- Quitter");
-		System.out.println("1- Créer un nouveau paramètre");
-		System.out.println("2- Voir les paramètres existants");
-		System.out.println("3- Modifier les paramètres existants");
-		System.out.println("4- Supprimer un paramètre existant");
+		System.out.println("1- Creer un nouveau parametre");
+		System.out.println("2- Voir les parametres existants");
+		System.out.println("3- Modifier les parametres existants");
+		System.out.println("4- Supprimer un parametre existant");
 		System.out.println("5- Ajouter un type de retour");
 		System.out.println("6- Modifier le type de retour existant");
 		System.out.println("7- Supprimer le type de retour existant");
-		System.out.println("8- Renommer la méthode");//TODO
+		System.out.println("8- Renommer la methode");//TODO
 	}
 	private void creerNouveauParametre(Scanner sc){
-		System.out.println("Donner un nom à votre attribut");
+		System.out.println("Donner un nom a votre parametre");
 		String str = sc.nextLine();
 		Parametre p = new Parametre(str);
 		this.listeParametres.add(p);
-		p.menu(sc); //todo ça devrait peut être pas être là
+		p.menu(sc);
 	}
 
 	public Parametre choixParametre(Scanner sc){
-		System.out.println("** Choix d'une Classe **");
+		System.out.println("** Choix d'un Parametre **");
 		for (int i=0; i<listeParametres.size(); i++){
 			System.out.print(i + " - " + listeParametres.get(i).getNom() );
 		}
@@ -124,5 +124,11 @@ public class Methode {
     	if(!typeRetour.equals("non defini")){
     		System.out.println(" : " + typeRetour);
     	}
-    }	
+    }
+	
+	private void supprimerParametre(Scanner sc){
+    	Parametre param = choixParametre(sc);
+    	listeParametres.remove(param);
+    	System.out.println("Le parametre " + param.getNom() + " a bien �t� supprim�");
+    }
 }
