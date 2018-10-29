@@ -147,7 +147,7 @@ public class Classe {
     public Attribut choixAttribut(Scanner sc) {
         System.out.println("** Choix d'un Attribut **");
         for (int i = 0; i < listeAttributs.size(); i++) {
-            System.out.print(i + " - " + listeAttributs.get(i).getNom());
+            System.out.println(i + " - " + listeAttributs.get(i).getNom());
         }
         int choix;
         do {
@@ -162,7 +162,7 @@ public class Classe {
     public Methode choixMethode(Scanner sc) {
         System.out.println("** Choix d'une Methode **");
         for (int i = 0; i < listeMethodes.size(); i++) {
-            System.out.print(i + " - " + listeMethodes.get(i).getNom());
+            System.out.println(i + " - " + listeMethodes.get(i).getNom());
         }
         int choix;
         do {

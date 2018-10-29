@@ -87,7 +87,7 @@ public class Methode {
 	public Parametre choixParametre(Scanner sc) {
 		System.out.println("** Choix d'un Parametre **");
 		for (int i = 0; i < listeParametres.size(); i++) {
-			System.out.print(i + " - " + listeParametres.get(i).getNom());
+			System.out.println(i + " - " + listeParametres.get(i).getNom());
 		}
 		int choix;
 		do {

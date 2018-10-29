@@ -32,7 +32,7 @@ public class DiagrammeClasse {
                 if(listeClasses.size() >= 1){
                     choixClasse(sc).menu(sc);
                 }else {
-                    System.out.println("Aucune méthode");
+                    System.out.println("Aucune classe");
                 }
                 break;
             case 4:
@@ -40,7 +40,7 @@ public class DiagrammeClasse {
                 if(listeClasses.size() >= 1){
                     supprimerClasse(sc);
                 }else {
-                    System.out.println("Aucune méthode");
+                    System.out.println("Aucune classe");
                 }
                 break;
             case 5:
@@ -56,7 +56,7 @@ public class DiagrammeClasse {
                 if(listeAssociations.size() >= 1){
                     choixAssociation(sc).menu(sc);
                 }else {
-                    System.out.println("Aucune méthode");
+                    System.out.println("Aucune association");
                 }
                 break;
             case 8:
@@ -64,7 +64,7 @@ public class DiagrammeClasse {
                 if(listeAssociations.size() >= 1){
                     supprimerAssociation(sc);
                 }else {
-                    System.out.println("Aucune méthode");
+                    System.out.println("Aucune association");
                 }
                 break;
             case 9:
@@ -156,14 +156,14 @@ public class DiagrammeClasse {
     }
 
     public void afficherClasses() {
-        System.out.println("** Classes du Diagramme de Classes" + this.getNom() + " **");
+        System.out.println("** Classes du Diagramme de Classes " + this.getNom() + " **");
         for (Classe classe : listeClasses) {
             classe.afficher();
         }
     }
 
     public void afficherAssociations() {
-        System.out.println("** Associations du Diagramme de Classes" + this.getNom() + "**");
+        System.out.println("** Associations du Diagramme de Classes " + this.getNom() + "**");
         for (Association asso : listeAssociations) {
             asso.afficher();
         }
@@ -172,7 +172,7 @@ public class DiagrammeClasse {
     public Classe choixClasse(Scanner sc) {
         System.out.println("** Choix d'une Classe **");
         for (int i = 0; i < listeClasses.size(); i++) {
-            System.out.print(i + " - " + listeClasses.get(i).getNom());
+            System.out.println(i + " - " + listeClasses.get(i).getNom());
         }
         int choix;
         do {
@@ -187,7 +187,7 @@ public class DiagrammeClasse {
     public Association choixAssociation(Scanner sc) {
         System.out.println("** Choix d'une Association **");
         for (int i = 0; i < listeAssociations.size(); i++) {
-            System.out.print(i + " - " + listeAssociations.get(i).getNom());
+            System.out.println(i + " - " + listeAssociations.get(i).getNom());
         }
         int choix;
         do {
