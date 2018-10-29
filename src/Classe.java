@@ -64,6 +64,7 @@ public class Classe {
 	                break;
 	            case 6:
 	                System.out.println("Vous avez saisi : choix 6");
+	                afficherMethodes();
 	                break;
 	            case 7:
 	                System.out.println("Vous avez saisi : choix 7");
@@ -111,7 +112,7 @@ public class Classe {
         String str = sc.nextLine();
         Attribut a = new Attribut(str);
         this.listeAttributs.add(a);
-        a.menu(sc); //todo ça devrait peut être pas être là
+        a.menu(sc);
     }
     
     private void creerNouvelleMethode(Scanner sc){
@@ -120,7 +121,7 @@ public class Classe {
         String str = sc.nextLine();
         Methode m = new Methode(str);
         this.listeMethodes.add(m);
-        m.menu(sc); //todo ça devrait peut être pas être là
+        m.menu(sc);
     }
 
     public Attribut choixAttribut(Scanner sc){
@@ -137,9 +138,19 @@ public class Classe {
         System.out.println("Vous avez choisi l'attribut " + listeAttributs.get(choix).getNom());
         return listeAttributs.get(choix);
     }
+    
     public void afficherAttributs () {
-        System.out.println("** Attributs de la  Classes"+ this.getNom() +"**");
-        //TODO
+        System.out.println("** Attributs de la  Classe "+ this.getNom() +"**");
+        for(Attribut att : listeAttributs){
+        	att.afficher();
+        }
+    }
+    
+    public void afficherMethodes () {
+        System.out.println("** Methodes de la  Classe "+ this.getNom() +"**");
+        for(Methode meth : listeMethodes){
+        	meth.afficher();
+        }
     }
     
     private void renommer(Scanner sc){
