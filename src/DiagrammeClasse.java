@@ -140,11 +140,15 @@ public class DiagrammeClasse {
 
     public void afficherClasses () {
         System.out.println("** Classes du Diagramme de Classes"+ this.getNom() +"**");
-        //TODO
+        for(ClasseAbstraite classe : listeClasses){
+        	classe.afficher();
+        }
     }
     public void afficherAssociations () {
         System.out.println("** Associations du Diagramme de Classes"+ this.getNom() +"**");
-        //TODO
+        for(Association asso : listeAssociations){
+        	asso.afficher();
+        }
     }
 
     public ClasseAbstraite choixClasse(Scanner sc){
@@ -184,6 +188,9 @@ public class DiagrammeClasse {
     		if(asso.origine.equals(classe)||asso.extremite.equals(classe)){
     			listeAssociations.remove(asso);
     		}
+    	}
+    	for(ClasseAbstraite cl : listeClasses){
+    		cl.supprimerElementsEnRelationAvecClasse(classe);
     	}
     	listeClasses.remove(classe);
     	System.out.println("La classe " + classe.getNom() + " et toutes ses associations associées ont bien été supprimées");

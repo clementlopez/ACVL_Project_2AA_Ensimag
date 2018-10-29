@@ -7,8 +7,8 @@ public class Controlleur {
 
     public Controlleur() {
         listeDiagrammeClasse = new ArrayList<>();
-
     }
+    
     public void play(){
     	int choix = -1;
     	Scanner sc = new Scanner(System.in);
@@ -38,6 +38,7 @@ public class Controlleur {
     	}
     	sc.close();
     }
+    
     private void crerNouveauDiagrammeDeClasse(Scanner sc){
         System.out.println("** Creation d'un diagramme de classe **");
         System.out.println("Donner un nom a votre diagramme de classe");

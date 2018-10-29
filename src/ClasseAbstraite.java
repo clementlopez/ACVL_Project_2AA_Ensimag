@@ -137,4 +137,18 @@ public class ClasseAbstraite {
     		meth.afficher();
     	}
     }
+
+	public void supprimerElementsEnRelationAvecClasse(ClasseAbstraite classe) {
+		for(Attribut att : listeAttributs){
+			if(att.getType().getNom().equals(classe.getNom())){
+				listeAttributs.remove(att);
+			}
+		}
+		for(Methode meth : listeMethodes){
+			if(meth.getTypeRetour().equals(classe.getNom())){
+				listeMethodes.remove(meth);
+			}
+		}
+		
+	}
 }
