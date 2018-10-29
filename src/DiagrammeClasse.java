@@ -6,11 +6,17 @@ public class DiagrammeClasse {
     String nom;
     List<Classe> listeClasses;
     List<Association> listeAssociations;
+    List<String> listeTypes;
 
     public DiagrammeClasse(String mName) {
         this.nom = mName;
         listeClasses = new ArrayList<>();
         listeAssociations = new ArrayList<>();
+        listeTypes = new ArrayList<String>();
+        listeTypes.add("String");
+        listeTypes.add("int");
+        listeTypes.add("float");
+        listeTypes.add("boolean");
     }
 
     public void menu(Scanner sc) {
@@ -33,7 +39,7 @@ public class DiagrammeClasse {
 		            case 3:
 		                System.out.println("Vous avez saisi : choix 3");
 		                if(listeClasses.size() >= 1){
-		                    choixClasse(sc).menu(sc);
+		                    choixClasse(sc).menu(sc, listeTypes, listeClasses);
 		                }else {
 		                    System.out.println("Aucune classe");
 		                }
@@ -73,7 +79,6 @@ public class DiagrammeClasse {
 		            case 9:
 		                System.out.println("Vous avez saisi : choix 9");
 		                System.out.println("Non implementes");
-		                // TODO
 		                break;
 		            case 10:
 		                System.out.println("Vous avez saisi : choix 10");
@@ -94,10 +99,15 @@ public class DiagrammeClasse {
         String str = "";
         while (str.equals("")) {
             str = sc.nextLine();
+            if(listeTypes.contains(str)) {
+            	System.out.println("Cette classe existe déjà");
+            	str = "";
+            }
         }
         Classe c = new Classe(str);
         this.listeClasses.add(c);
-        c.menu(sc);
+        this.listeTypes.add(str);
+        c.menu(sc, listeTypes, listeClasses);
     }
 
     private void creerNouvelleAssociation(Scanner sc) {
@@ -129,7 +139,7 @@ public class DiagrammeClasse {
         System.out.println("6- Voir les associations existantes");
         System.out.println("7- Modifier les associations existantes");
         System.out.println("8- Supprimer une association existante");
-        System.out.println("9- Gerer les relations d'heritage");// TODO
+        System.out.println("9- Gerer les relations d'heritage");
         System.out.println("10- Renommer le diagramme de classe");
 
     }
@@ -207,7 +217,6 @@ public class DiagrammeClasse {
     }
 
     private void supprimerClasse(Scanner sc) {
-        // TODO completer pour supprimer attribut du type de la classe
         Classe classe = choixClasse(sc);
         for (Association asso : listeAssociations) {
             if (asso.origine.equals(classe) || asso.extremite.equals(classe)) {
@@ -218,13 +227,13 @@ public class DiagrammeClasse {
             cl.supprimerElementsEnRelationAvecClasse(classe);
         }
         listeClasses.remove(classe);
-        System.out.println(
-                "La classe " + classe.getNom() + " et toutes ses associations associï¿½es ont bien ï¿½tï¿½ supprimï¿½es");
+        System.out.println("La classe " + classe.getNom() + " et toutes ses associations associees ont bien ete supprimees");
+        listeTypes.remove(classe.getNom());
     }
 
     private void supprimerAssociation(Scanner sc) {
         Association asso = choixAssociation(sc);
         listeAssociations.remove(asso);
-        System.out.println("L'association " + asso.getNom() + " a bien ï¿½tï¿½ supprimï¿½e");
+        System.out.println("L'association " + asso.getNom() + " a bien ete supprimee");
     }
 }

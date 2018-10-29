@@ -13,7 +13,6 @@ public class Classe {
         this.nom = mName;
         listeAttributs = new ArrayList<>();
         listeMethodes = new ArrayList<>();
-
         this.estAbstraite = false;
     }
 
@@ -37,7 +36,7 @@ public class Classe {
         this.estAbstraite = estAbstraite;
     }
 
-    public void menu(Scanner sc) {
+    public void menu(Scanner sc, List<String> listeTypes, List<Classe> listeClasses) {
         int choix = -1;
         String reponseUser;
         while (choix != 0) {
@@ -48,7 +47,7 @@ public class Classe {
 	            switch (choix) {
 		            case 1:
 		                System.out.println("Vous avez saisi : choix 1");
-		                creerNouvelAttribut(sc);
+		                creerNouvelAttribut(sc, listeTypes);
 		                break;
 		            case 2:
 		                System.out.println("Vous avez saisi : choix 2");
@@ -57,7 +56,7 @@ public class Classe {
 		            case 3:
 		                System.out.println("Vous avez saisi : choix 3");
 		                if(listeAttributs.size() >= 1){
-		                    choixAttribut(sc).menu(sc);
+		                    choixAttribut(sc).menu(sc, listeTypes);
 		                }else {
 		                    System.out.println("Aucun attribut");
 		                }
@@ -72,7 +71,7 @@ public class Classe {
 		                break;
 		            case 5:
 		                System.out.println("Vous avez saisi : choix 5");
-		                creerNouvelleMethode(sc);
+		                creerNouvelleMethode(sc, listeTypes);
 		                break;
 		            case 6:
 		                System.out.println("Vous avez saisi : choix 6");
@@ -85,7 +84,7 @@ public class Classe {
 		            case 7:
 		                System.out.println("Vous avez saisi : choix 7");
 		                if(listeMethodes.size() >= 1){
-		                    choixMethode(sc).menu(sc);
+		                    choixMethode(sc).menu(sc, listeTypes);
 		                }else {
 		                    System.out.println("Aucune methode");
 		                }
@@ -101,7 +100,7 @@ public class Classe {
 		            case 9:
 		                System.out.println("Vous avez saisi : choix 9");
 		                System.out.println("Comment voulez vous appeler cette Classe");
-		                renommer(sc);
+		                renommer(sc, listeTypes, listeClasses);
 		                break;
 		            case 10:
 		                System.out.println("Vous avez saisi : choix 10");
@@ -137,22 +136,22 @@ public class Classe {
         }
     }
 
-    private void creerNouvelAttribut(Scanner sc) {
+    private void creerNouvelAttribut(Scanner sc, List<String> listeTypes) {
         System.out.println("Creation d'un nouvel attribut");
         System.out.println("Donner un nom a votre attribut");
         String str = sc.nextLine();
         Attribut a = new Attribut(str);
         this.listeAttributs.add(a);
-        a.menu(sc); // todo ça devrait peut être pas être là
+        a.menu(sc, listeTypes);
     }
 
-    private void creerNouvelleMethode(Scanner sc) {
+    private void creerNouvelleMethode(Scanner sc, List<String> listeTypes) {
         System.out.println("Creation d'une nouvelle methode");
         System.out.println("Donner un nom a votre methode");
         String str = sc.nextLine();
         Methode m = new Methode(str);
         this.listeMethodes.add(m);
-        m.menu(sc); // todo ça devrait peut être pas être là
+        m.menu(sc, listeTypes);
     }
 
     public Attribut choixAttribut(Scanner sc) {
@@ -199,10 +198,17 @@ public class Classe {
         }
     }
 
-    private void renommer(Scanner sc) {
+    private void renommer(Scanner sc, List<String> listeTypes, List<Classe> listeClasses) {
         String str = "";
         while (str.equals("")) {
-            str = sc.nextLine();
+        	str = sc.nextLine();
+            if(listeTypes.contains(str)&&!str.equals(getNom())) {
+            	System.out.println("Cette classe existe d�j�");
+            	str = "";
+            }
+        }
+        for(Classe classe : listeClasses) {
+        	classe.repercuterModifNomClasse(getNom(), str);
         }
         setNom(str);
     }
@@ -212,6 +218,9 @@ public class Classe {
     }
 
     public void afficher() {
+    	if(isEstAbstraite()) {
+    		System.out.println("\t\t<<abstract>>");
+    	}
         System.out.println("\t\t- " + getNom());
         System.out.println("\t\t\tListe des attributs");
         for (Attribut att : listeAttributs) {
@@ -233,6 +242,17 @@ public class Classe {
             if (meth.getTypeRetour().equals(classe.getNom())) {
                 listeMethodes.remove(meth);
             }
+        }
+    }
+    
+    public void repercuterModifNomClasse(String ancienNomClasse, String nouveauNomClasse) {
+    	for (Attribut att : listeAttributs) {
+            if (att.getType().equals(ancienNomClasse)) {
+                att.setType(nouveauNomClasse);
+            }
+        }
+        for (Methode meth : listeMethodes) {
+        	meth.repercuterModifNomClasse(ancienNomClasse, nouveauNomClasse);
         }
     }
 

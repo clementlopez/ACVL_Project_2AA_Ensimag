@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Parametre {
@@ -8,9 +9,11 @@ public class Parametre {
 	public Parametre(String nom) {
 		super();
 		this.nom = nom;
+		this.valInit = "";
+		this.type = "";
 	}
 
-	public void menu(Scanner sc) {
+	public void menu(Scanner sc, List<String> listeTypes) {
 		int choix = -1;
 		String reponseUser;
 		while (choix != 0) {
@@ -28,7 +31,7 @@ public class Parametre {
 						break;
 					case 2:
 						System.out.println("Vous avez saisi : choix 2");
-						// TODO
+						definirType(sc, listeTypes);
 						break;
 					case 3:
 						if(getType().equals("String")||getType().equals("int")||getType().equals("float")||getType().equals("boolean")) {
@@ -86,7 +89,24 @@ public class Parametre {
 
 	public void afficher() {
 		System.out.println(getType() + " " + getNom());
+		if(!getValInit().equals("")) {
+    		System.out.print(" = " + getValInit());
+    	}
 	}
+	
+	private void definirType(Scanner sc, List<String> listeTypes) {
+    	System.out.println("Quel Type voulez-vous donner à cet attribut ?");
+    	for(int i=0; i < listeTypes.size(); i++) {
+    		System.out.println(i + "- " + listeTypes.get(i));
+    	}
+    	int choix;
+        do {
+            System.out.println("Lequel voulez vous choisir ?");
+            choix = Integer.parseInt(sc.nextLine());
+        } while (choix >= listeTypes.size());
+        setType(listeTypes.get(choix));
+        setValInit("");
+    }
 	
 	private void donnerValInit(Scanner sc) {
 		boolean bonType = false;

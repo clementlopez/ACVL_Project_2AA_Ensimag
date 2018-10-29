@@ -12,19 +12,19 @@ public class Methode {
 		listeParametres = new ArrayList<>();
 	}
 
-	public void menu(Scanner sc) {
+	public void menu(Scanner sc, List<String> listeTypes) {
 		int choix = -1;
         String reponseUser;
         while (choix != 0) {
             afficherOptionsMenu();
             reponseUser = sc.nextLine();
-			if(reponseUser.matches("^[0-3]$")){
+			if(reponseUser.matches("^[0-7]$")){
 				choix = Integer.parseInt(reponseUser);
 
 				switch (choix) {
 					case 1:
 						System.out.println("Vous avez saisi : choix 1");
-						creerNouveauParametre(sc);
+						creerNouveauParametre(sc, listeTypes);
 						break;
 					case 2:
 						System.out.println("Vous avez saisi : choix 2");
@@ -33,7 +33,7 @@ public class Methode {
 					case 3:
 						System.out.println("Vous avez saisi : choix 3");
 						if(listeParametres.size() >= 1){
-							choixParametre(sc).menu(sc);
+							choixParametre(sc).menu(sc, listeTypes);
 						}else {
 							System.out.println("Aucune methode");
 						}
@@ -47,15 +47,15 @@ public class Methode {
 						}
 						break;
 					case 5:
-						System.out.println("Vous avez saisi : choix 5");// TODO
+						System.out.println("Vous avez saisi : choix 5");
+						definirTypeRetour(sc, listeTypes);
 						break;
 					case 6:
 						System.out.println("Vous avez saisi : choix 6");
+						setTypeRetour("non défini");
+						System.out.println("Cette methode n'a plus de type de retour");
 						break;
 					case 7:
-						System.out.println("Vous avez saisi : choix 7");
-						break;
-					case 8:
 						System.out.println("Vous avez saisi : choix 8");
 						renommer(sc);
 						break;
@@ -77,18 +77,17 @@ public class Methode {
 		System.out.println("2- Voir les parametres existants");
 		System.out.println("3- Modifier les parametres existants");
 		System.out.println("4- Supprimer un parametre existant");
-		System.out.println("5- Ajouter un type de retour");
-		System.out.println("6- Modifier le type de retour existant");
-		System.out.println("7- Supprimer le type de retour existant");
-		System.out.println("8- Renommer la methode");
+		System.out.println("5- Modifier le type de retour");
+		System.out.println("6- Supprimer le type de retour");
+		System.out.println("7- Renommer la methode");
 	}
 
-	private void creerNouveauParametre(Scanner sc) {
+	private void creerNouveauParametre(Scanner sc, List<String> listeTypes) {
 		System.out.println("Donner un nom a votre parametre");
 		String str = sc.nextLine();
 		Parametre p = new Parametre(str);
 		this.listeParametres.add(p);
-		p.menu(sc);
+		p.menu(sc, listeTypes);
 	}
 
 	public Parametre choixParametre(Scanner sc) {
@@ -113,6 +112,19 @@ public class Methode {
 			param.afficher();
 		}
 	}
+	
+	private void definirTypeRetour(Scanner sc, List<String> listeTypes) {
+    	System.out.println("Quel Type voulez-vous donner à cet attribut ?");
+    	for(int i=0; i < listeTypes.size(); i++) {
+    		System.out.println(i + "- " + listeTypes.get(i));
+    	}
+    	int choix;
+        do {
+            System.out.println("Lequel voulez vous choisir ?");
+            choix = Integer.parseInt(sc.nextLine());
+        } while (choix >= listeTypes.size());
+        setTypeRetour(listeTypes.get(choix));
+    }
 
 	public String getNom() {
 		return nom;
@@ -156,6 +168,17 @@ public class Methode {
 			System.out.println(" : " + typeRetour);
 		}
 	}
+	
+	public void repercuterModifNomClasse(String ancienNomClasse, String nouveauNomClasse) {
+    	if(getTypeRetour().equals(ancienNomClasse)) {
+    		setTypeRetour(nouveauNomClasse);
+    	}
+        for (Parametre param : listeParametres) {
+        	if(param.getType().equals(ancienNomClasse)) {
+        		param.setType(nouveauNomClasse);
+        	}
+        }
+    }
 
 	private void renommer(Scanner sc) {
 		String str = "";

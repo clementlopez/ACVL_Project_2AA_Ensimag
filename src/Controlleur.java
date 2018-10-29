@@ -23,6 +23,7 @@ public class Controlleur {
 	            case 1:
 	                System.out.println("Vous avez saisi : choix 1");
 	                crerNouveauDiagrammeDeClasse(sc);
+	                //System.out.println(choix);
 	                break;
 	            case 2:
 	                System.out.println("Vous avez saisi : choix 2");
