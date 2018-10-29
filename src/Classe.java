@@ -12,6 +12,8 @@ public class Classe {
     public Classe(String mName) {
         this.nom = mName;
         listeAttributs = new ArrayList<>();
+        listeMethodes = new ArrayList<>();
+
         this.estAbstraite = false;
     }
 
