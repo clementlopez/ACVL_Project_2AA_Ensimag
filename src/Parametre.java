@@ -9,6 +9,7 @@ public class Parametre {
 		super();
 		this.nom = nom;
 	}
+	
 	public void menu(Scanner sc) {
 		int choix = -1;
     	while(choix!=0){

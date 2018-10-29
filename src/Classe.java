@@ -35,11 +35,10 @@ public class Classe {
 		this.estAbstraite = estAbstraite;
 	}
 
-	public void menu() {
+	public void menu(Scanner sc) {
     	int choix = -1;
         while(choix!=0){
         	afficherOptionsMenu();
-	        Scanner sc = new Scanner(System.in);
 	        choix = sc.nextInt();
 	        switch (choix) {
 	            case 1:
@@ -87,6 +86,7 @@ public class Classe {
 	        }
         }
     }
+
     private void afficherOptionsMenu() {
         System.out.println("** Menu Classe **");
 
@@ -108,22 +108,23 @@ public class Classe {
         	System.out.println("10- Rendre la classe abstraite");
         }
     }
-    private void creerNouvelAttribut(Scanner sc){
+
+    private void creerNouvelAttribut(Scanner sc) {
         System.out.println("Creation d'un nouvel attribut");
         System.out.println("Donner un nom a votre attribut");
         String str = sc.nextLine();
         Attribut a = new Attribut(str);
         this.listeAttributs.add(a);
-        a.menu(sc);
+        a.menu(sc); // todo ça devrait peut être pas être là
     }
-    
-    private void creerNouvelleMethode(Scanner sc){
+
+    private void creerNouvelleMethode(Scanner sc) {
         System.out.println("Creation d'une nouvelle methode");
         System.out.println("Donner un nom a votre methode");
         String str = sc.nextLine();
         Methode m = new Methode(str);
         this.listeMethodes.add(m);
-        m.menu(sc);
+        m.menu(sc); // todo ça devrait peut être pas être là
     }
 
     public Attribut choixAttribut(Scanner sc){
@@ -132,11 +133,11 @@ public class Classe {
             System.out.print(i + " - " + listeAttributs.get(i).getNom() );
         }
         int choix;
-        do{
+        do {
             System.out.println("Lequel voulez vous choisir ?");
 
             choix = sc.nextInt();
-        }while(choix > listeAttributs.size());
+        } while (choix > listeAttributs.size());
         System.out.println("Vous avez choisi l'attribut " + listeAttributs.get(choix).getNom());
         return listeAttributs.get(choix);
     }
@@ -157,27 +158,27 @@ public class Classe {
     }
     
     public void afficherAttributs () {
-        System.out.println("** Attributs de la  Classe "+ this.getNom() +"**");
+        System.out.println("** Attributs de la  Classe "+ this.getNom() +" **");
         for(Attribut att : listeAttributs){
         	att.afficher();
         }
     }
-    
-    public void afficherMethodes () {
-        System.out.println("** Methodes de la  Classe "+ this.getNom() +"**");
-        for(Methode meth : listeMethodes){
-        	meth.afficher();
+
+    public void afficherMethodes() {
+        System.out.println("** Methodes de la  Classe " + this.getNom() + "**");
+        for (Methode meth : listeMethodes) {
+            meth.afficher();
         }
     }
-    
-    private void renommer(Scanner sc){
-    	String str = "";
-        while(str.equals("")){
-        	str = sc.nextLine();
+
+    private void renommer(Scanner sc) {
+        String str = "";
+        while (str.equals("")) {
+            str = sc.nextLine();
         }
         setNom(str);
     }
-    
+
     public String getNom() {
         return nom;
     }

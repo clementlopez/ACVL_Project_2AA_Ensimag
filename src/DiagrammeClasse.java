@@ -17,8 +17,7 @@ public class DiagrammeClasse {
     	int choix = -1;
         while(choix!=0){
         	afficherOptionsMenu();
-	        choix = sc.nextInt();
-	
+            choix = Integer.parseInt(sc.nextLine());
 	        switch (choix){
 	            case 1:
 	                System.out.println("Vous avez saisi : choix 1");
@@ -30,7 +29,7 @@ public class DiagrammeClasse {
 	                break;
 	            case 3:
 	                System.out.println("Vous avez saisi : choix 3");
-	                choixClasse(sc).menu();
+	                choixClasse(sc).menu(sc);
 	                break;
 	            case 4:
 	                System.out.println("Vous avez saisi : choix 4");
@@ -74,7 +73,7 @@ public class DiagrammeClasse {
         }
         Classe c = new Classe(str);
         this.listeClasses.add(c);
-        c.menu(); //ça devrait peut être pas être là
+        c.menu(sc);
     }
 
     private void creerNouvelleAssociation(Scanner sc){

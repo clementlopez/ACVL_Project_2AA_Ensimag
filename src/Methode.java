@@ -11,14 +11,14 @@ public class Methode {
 		this.nom = nom;
 		listeParametres = new ArrayList<>();
 	}
+
 	public void menu(Scanner sc) {
 		int choix = -1;
-    	while(choix!=0){
+		while (choix != 0) {
 			afficherOptionsMenu();
-			choix = sc.nextInt();
-	
+			choix = Integer.parseInt(sc.nextLine());
+
 			switch (choix) {
-	
 				case 1:
 					System.out.println("Vous avez saisi : choix 1");
 					creerNouveauParametre(sc);
@@ -49,8 +49,9 @@ public class Methode {
 					break;
 				default:
 			}
-    	}
+		}
 	}
+
 	private void afficherOptionsMenu() {
 		System.out.println("** Menu Methode **");
 
@@ -79,56 +80,61 @@ public class Methode {
 			System.out.print(i + " - " + listeParametres.get(i).getNom() );
 		}
 		int choix;
-		do{
+		do {
 			System.out.println("Lequel voulez vous choisir ?");
 
 			choix = sc.nextInt();
-		}while(choix > listeParametres.size());
+		} while (choix > listeParametres.size());
 		System.out.println("Vous avez choisi le parametre " + listeParametres.get(choix).getNom());
 
 		return listeParametres.get(choix);
 	}
 
-	public void afficherParametres () {
-		System.out.println("** Parametres de la  Methode"+ this.getNom() +"**");
-		//TODO
+	public void afficherParametres() {
+		System.out.println("** Parametres de la  Methode" + this.getNom() + "**");
+		// TODO
 	}
-
 
 	public String getNom() {
 		return nom;
 	}
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 	public String getTypeRetour() {
 		return typeRetour;
 	}
+
 	public void setTypeRetour(String typeRetour) {
 		this.typeRetour = typeRetour;
 	}
+
 	public List<Parametre> getListeParametres() {
 		return listeParametres;
 	}
+
 	public void setListeParametres(List<Parametre> listeParametres) {
 		this.listeParametres = new ArrayList<Parametre>(listeParametres);
 	}
-	public void afficher(){
-    	System.out.print("\t\t\t\t " + getNom() + "(");
-    	for(int i=0; i<listeParametres.size(); i++){
-    		System.out.print(listeParametres.get(i).getNom());
-    		if(i<listeParametres.size()-1){
-    			System.out.print(", ");
-    		}
-    	}
-    	if(!typeRetour.equals("non defini")){
-    		System.out.println(" : " + typeRetour);
-    	}
-    }
 	
 	private void supprimerParametre(Scanner sc){
     	Parametre param = choixParametre(sc);
     	listeParametres.remove(param);
     	System.out.println("Le parametre " + param.getNom() + " a bien été supprimé");
     }
+
+	public void afficher() {
+		System.out.print("\t\t\t\t " + getNom() + "(");
+		for (int i = 0; i < listeParametres.size(); i++) {
+			System.out.print(listeParametres.get(i).getNom());
+			if (i < listeParametres.size() - 1) {
+				System.out.print(", ");
+			}
+		}
+		if (!typeRetour.equals("non defini")) {
+			System.out.println(" : " + typeRetour);
+		}
+	}
 }
