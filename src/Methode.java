@@ -29,11 +29,19 @@ public class Methode {
 				break;
 			case 3:
 				System.out.println("Vous avez saisi : choix 3");
-				choixParametre(sc).menu(sc);
+				if(listeParametres.size() >= 1){
+					choixParametre(sc).menu(sc);
+				}else {
+					System.out.println("Aucune méthode");
+				}
 				break;
 			case 4:
 				System.out.println("Vous avez saisi : choix 4");
-				supprimerParametre(sc);
+				if(listeParametres.size() >= 1){
+					supprimerParametre(sc);
+				}else {
+					System.out.println("Aucune méthode");
+				}
 				break;
 			case 5:
 				System.out.println("Vous avez saisi : choix 5");// TODO

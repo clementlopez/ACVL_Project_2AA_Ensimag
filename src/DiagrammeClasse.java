@@ -29,11 +29,19 @@ public class DiagrammeClasse {
                 break;
             case 3:
                 System.out.println("Vous avez saisi : choix 3");
-                choixClasse(sc).menu(sc);
+                if(listeClasses.size() >= 1){
+                    choixClasse(sc).menu(sc);
+                }else {
+                    System.out.println("Aucune méthode");
+                }
                 break;
             case 4:
                 System.out.println("Vous avez saisi : choix 4");
-                supprimerClasse(sc);
+                if(listeClasses.size() >= 1){
+                    supprimerClasse(sc);
+                }else {
+                    System.out.println("Aucune méthode");
+                }
                 break;
             case 5:
                 System.out.println("Vous avez saisi : choix 5");
@@ -45,11 +53,19 @@ public class DiagrammeClasse {
                 break;
             case 7:
                 System.out.println("Vous avez saisi : choix 7");
-                choixAssociation(sc).menu(sc);
+                if(listeAssociations.size() >= 1){
+                    choixAssociation(sc).menu(sc);
+                }else {
+                    System.out.println("Aucune méthode");
+                }
                 break;
             case 8:
                 System.out.println("Vous avez saisi : choix 8");
-                supprimerAssociation(sc);
+                if(listeAssociations.size() >= 1){
+                    supprimerAssociation(sc);
+                }else {
+                    System.out.println("Aucune méthode");
+                }
                 break;
             case 9:
                 System.out.println("Vous avez saisi : choix 9");

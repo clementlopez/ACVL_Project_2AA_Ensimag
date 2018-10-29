@@ -27,11 +27,19 @@ public class Controlleur {
                 break;
             case 3:
                 System.out.println("Vous avez saisi : choix 3");
-                choixDiagrammeDeClasse(sc).menu(sc);
+                if(listeDiagrammeClasse.size() >= 1){
+                    choixDiagrammeDeClasse(sc).menu(sc);
+                }else {
+                    System.out.println("Aucune méthode");
+                }
                 break;
             case 4:
                 System.out.println("Vous avez saisi : choix 4");
-                supprimerDiagrammeClasse(sc);
+                if(listeDiagrammeClasse.size() >= 1){
+                    supprimerDiagrammeClasse(sc);
+                }else {
+                    System.out.println("Aucune méthode");
+                }
                 break;
             default:
             }

@@ -53,11 +53,19 @@ public class Classe {
                 break;
             case 3:
                 System.out.println("Vous avez saisi : choix 3");
-                choixAttribut(sc).menu(sc);
+                if(listeAttributs.size() >= 1){
+                    choixAttribut(sc).menu(sc);
+                }else {
+                    System.out.println("Aucun attribut");
+                }
                 break;
             case 4:
                 System.out.println("Vous avez saisi : choix 4");
-                supprimerAttribut(sc);
+                if(listeAttributs.size() >= 1){
+                    supprimerAttribut(sc);
+                }else {
+                    System.out.println("Aucun attribut");
+                }
                 break;
             case 5:
                 System.out.println("Vous avez saisi : choix 5");
@@ -69,11 +77,19 @@ public class Classe {
                 break;
             case 7:
                 System.out.println("Vous avez saisi : choix 7");
-                choixMethode(sc).menu(sc);
+                if(listeMethodes.size() >= 1){
+                    choixMethode(sc).menu(sc);
+                }else {
+                    System.out.println("Aucune méthode");
+                }
                 break;
             case 8:
                 System.out.println("Vous avez saisi : choix 8");
-                supprimerMethode(sc);
+                if(listeMethodes.size() >= 1){
+                    supprimerMethode(sc);
+                }else {
+                    System.out.println("Aucune méthode");
+                }
                 break;
             case 9:
                 System.out.println("Vous avez saisi : choix 9");
