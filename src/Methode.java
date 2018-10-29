@@ -36,7 +36,7 @@ public class Methode {
 					supprimerParametre(sc);
 					break;
 				case 5:
-					System.out.println("Vous avez saisi : choix 5");
+					System.out.println("Vous avez saisi : choix 5");//TODO
 					break;
 				case 6:
 					System.out.println("Vous avez saisi : choix 6");
@@ -46,6 +46,7 @@ public class Methode {
 					break;
 				case 8:
 					System.out.println("Vous avez saisi : choix 8");
+					renommer(sc);
 					break;
 				default:
 			}
@@ -64,7 +65,7 @@ public class Methode {
 		System.out.println("5- Ajouter un type de retour");
 		System.out.println("6- Modifier le type de retour existant");
 		System.out.println("7- Supprimer le type de retour existant");
-		System.out.println("8- Renommer la methode");//TODO
+		System.out.println("8- Renommer la methode");
 	}
 	private void creerNouveauParametre(Scanner sc){
 		System.out.println("Donner un nom a votre parametre");
@@ -91,8 +92,10 @@ public class Methode {
 	}
 
 	public void afficherParametres() {
-		System.out.println("** Parametres de la  Methode" + this.getNom() + "**");
-		// TODO
+		System.out.println("** Parametres de la  Methode " + this.getNom() + " **");
+		for (Parametre param : listeParametres) {
+            param.afficher();
+        }
 	}
 
 	public String getNom() {
@@ -137,4 +140,12 @@ public class Methode {
 			System.out.println(" : " + typeRetour);
 		}
 	}
+	
+	private void renommer(Scanner sc) {
+        String str = "";
+        while (str.equals("")) {
+            str = sc.nextLine();
+        }
+        setNom(str);
+    }
 }

@@ -138,7 +138,7 @@ public class DiagrammeClasse {
     }
 
     public void afficherClasses () {
-        System.out.println("** Classes du Diagramme de Classes"+ this.getNom() +"**");
+        System.out.println("** Classes du Diagramme de Classes"+ this.getNom() +" **");
         for(Classe classe : listeClasses){
         	classe.afficher();
         }

@@ -64,5 +64,9 @@ public class Parametre {
 	public void setValInit(String valInit) {
 		this.valInit = valInit;
 	}
+
+	public void afficher() {
+		System.out.println(getType() + " " +getNom());
+	}
 	
 }
