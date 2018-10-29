@@ -15,69 +15,76 @@ public class DiagrammeClasse {
 
     public void menu(Scanner sc) {
         int choix = -1;
+        String reponseUser;
         while (choix != 0) {
             afficherOptionsMenu();
-            choix = Integer.parseInt(sc.nextLine());
-            switch (choix) {
-            case 1:
-                System.out.println("Vous avez saisi : choix 1");
-                creerNouvelleClasse(sc);
-                break;
-            case 2:
-                System.out.println("Vous avez saisi : choix 2");
-                afficherClasses();
-                break;
-            case 3:
-                System.out.println("Vous avez saisi : choix 3");
-                if(listeClasses.size() >= 1){
-                    choixClasse(sc).menu(sc);
-                }else {
-                    System.out.println("Aucune méthode");
-                }
-                break;
-            case 4:
-                System.out.println("Vous avez saisi : choix 4");
-                if(listeClasses.size() >= 1){
-                    supprimerClasse(sc);
-                }else {
-                    System.out.println("Aucune méthode");
-                }
-                break;
-            case 5:
-                System.out.println("Vous avez saisi : choix 5");
-                creerNouvelleAssociation(sc);
-                break;
-            case 6:
-                System.out.println("Vous avez saisi : choix 6");
-                afficherAssociations();
-                break;
-            case 7:
-                System.out.println("Vous avez saisi : choix 7");
-                if(listeAssociations.size() >= 1){
-                    choixAssociation(sc).menu(sc);
-                }else {
-                    System.out.println("Aucune méthode");
-                }
-                break;
-            case 8:
-                System.out.println("Vous avez saisi : choix 8");
-                if(listeAssociations.size() >= 1){
-                    supprimerAssociation(sc);
-                }else {
-                    System.out.println("Aucune méthode");
-                }
-                break;
-            case 9:
-                System.out.println("Vous avez saisi : choix 9");
-                System.out.println("Non implementes");
-                // TODO
-                break;
-            case 10:
-                System.out.println("Vous avez saisi : choix 10");
-                renommer(sc);
-                break;
-            default:
-            }
+            reponseUser = sc.nextLine();
+			if(reponseUser.matches("^(10|[0-9])$")){
+				choix = Integer.parseInt(reponseUser);
+	            switch (choix) {
+		            case 1:
+		                System.out.println("Vous avez saisi : choix 1");
+		                creerNouvelleClasse(sc);
+		                break;
+		            case 2:
+		                System.out.println("Vous avez saisi : choix 2");
+		                afficherClasses();
+		                break;
+		            case 3:
+		                System.out.println("Vous avez saisi : choix 3");
+		                if(listeClasses.size() >= 1){
+		                    choixClasse(sc).menu(sc);
+		                }else {
+		                    System.out.println("Aucune methode");
+		                }
+		                break;
+		            case 4:
+		                System.out.println("Vous avez saisi : choix 4");
+		                if(listeClasses.size() >= 1){
+		                    supprimerClasse(sc);
+		                }else {
+		                    System.out.println("Aucune methode");
+		                }
+		                break;
+		            case 5:
+		                System.out.println("Vous avez saisi : choix 5");
+		                creerNouvelleAssociation(sc);
+		                break;
+		            case 6:
+		                System.out.println("Vous avez saisi : choix 6");
+		                afficherAssociations();
+		                break;
+		            case 7:
+		                System.out.println("Vous avez saisi : choix 7");
+		                if(listeAssociations.size() >= 1){
+		                    choixAssociation(sc).menu(sc);
+		                }else {
+		                    System.out.println("Aucune methode");
+		                }
+		                break;
+		            case 8:
+		                System.out.println("Vous avez saisi : choix 8");
+		                if(listeAssociations.size() >= 1){
+		                    supprimerAssociation(sc);
+		                }else {
+		                    System.out.println("Aucune methode");
+		                }
+		                break;
+		            case 9:
+		                System.out.println("Vous avez saisi : choix 9");
+		                System.out.println("Non implementes");
+		                // TODO
+		                break;
+		            case 10:
+		                System.out.println("Vous avez saisi : choix 10");
+		                renommer(sc);
+		                break;
+		            default:
+	            }
+	        }
+			else {
+				System.out.println("Merci de saisir un choix du menu");
+			}
         }
     }
 

@@ -39,69 +39,80 @@ public class Classe {
 
     public void menu(Scanner sc) {
         int choix = -1;
+        String reponseUser;
         while (choix != 0) {
             afficherOptionsMenu();
-            choix = Integer.parseInt(sc.nextLine());
-            switch (choix) {
-            case 1:
-                System.out.println("Vous avez saisi : choix 1");
-                creerNouvelAttribut(sc);
-                break;
-            case 2:
-                System.out.println("Vous avez saisi : choix 2");
-                afficherAttributs();
-                break;
-            case 3:
-                System.out.println("Vous avez saisi : choix 3");
-                if(listeAttributs.size() >= 1){
-                    choixAttribut(sc).menu(sc);
-                }else {
-                    System.out.println("Aucun attribut");
-                }
-                break;
-            case 4:
-                System.out.println("Vous avez saisi : choix 4");
-                if(listeAttributs.size() >= 1){
-                    supprimerAttribut(sc);
-                }else {
-                    System.out.println("Aucun attribut");
-                }
-                break;
-            case 5:
-                System.out.println("Vous avez saisi : choix 5");
-                creerNouvelleMethode(sc);
-                break;
-            case 6:
-                System.out.println("Vous avez saisi : choix 6");
-                afficherMethodes();
-                break;
-            case 7:
-                System.out.println("Vous avez saisi : choix 7");
-                if(listeMethodes.size() >= 1){
-                    choixMethode(sc).menu(sc);
-                }else {
-                    System.out.println("Aucune méthode");
-                }
-                break;
-            case 8:
-                System.out.println("Vous avez saisi : choix 8");
-                if(listeMethodes.size() >= 1){
-                    supprimerMethode(sc);
-                }else {
-                    System.out.println("Aucune méthode");
-                }
-                break;
-            case 9:
-                System.out.println("Vous avez saisi : choix 9");
-                System.out.println("Comment voulez vous appeler cette Classe");
-                renommer(sc);
-                break;
-            case 10:
-                System.out.println("Vous avez saisi : choix 10");
-                changeAbstrait();
-                break;
-            default:
-            }
+            reponseUser = sc.nextLine();
+			if(reponseUser.matches("^(10|[0-9])$")){
+				choix = Integer.parseInt(reponseUser);
+	            switch (choix) {
+		            case 1:
+		                System.out.println("Vous avez saisi : choix 1");
+		                creerNouvelAttribut(sc);
+		                break;
+		            case 2:
+		                System.out.println("Vous avez saisi : choix 2");
+		                afficherAttributs();
+		                break;
+		            case 3:
+		                System.out.println("Vous avez saisi : choix 3");
+		                if(listeAttributs.size() >= 1){
+		                    choixAttribut(sc).menu(sc);
+		                }else {
+		                    System.out.println("Aucun attribut");
+		                }
+		                break;
+		            case 4:
+		                System.out.println("Vous avez saisi : choix 4");
+		                if(listeAttributs.size() >= 1){
+		                    supprimerAttribut(sc);
+		                }else {
+		                    System.out.println("Aucun attribut");
+		                }
+		                break;
+		            case 5:
+		                System.out.println("Vous avez saisi : choix 5");
+		                creerNouvelleMethode(sc);
+		                break;
+		            case 6:
+		                System.out.println("Vous avez saisi : choix 6");
+		                if(listeMethodes.size() >= 1){
+		                	afficherMethodes();
+		                }else {
+		                    System.out.println("Aucune methode");
+		                }
+		                break;
+		            case 7:
+		                System.out.println("Vous avez saisi : choix 7");
+		                if(listeMethodes.size() >= 1){
+		                    choixMethode(sc).menu(sc);
+		                }else {
+		                    System.out.println("Aucune methode");
+		                }
+		                break;
+		            case 8:
+		                System.out.println("Vous avez saisi : choix 8");
+		                if(listeMethodes.size() >= 1){
+		                    supprimerMethode(sc);
+		                }else {
+		                    System.out.println("Aucune methode");
+		                }
+		                break;
+		            case 9:
+		                System.out.println("Vous avez saisi : choix 9");
+		                System.out.println("Comment voulez vous appeler cette Classe");
+		                renommer(sc);
+		                break;
+		            case 10:
+		                System.out.println("Vous avez saisi : choix 10");
+		                changeAbstrait();
+		                break;
+		            default:
+	            }
+			}
+			else {
+				System.out.println("Merci de saisir un choix du menu");
+			}
         }
     }
 

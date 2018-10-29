@@ -12,27 +12,38 @@ public class Parametre {
 
 	public void menu(Scanner sc) {
 		int choix = -1;
+		String reponseUser;
 		while (choix != 0) {
 			afficherOptionsMenu();
-			choix = Integer.parseInt(sc.nextLine());
-
-			switch (choix) {
-			case 1:
-				System.out.println("Vous avez saisi : choix 1");
-				System.out.println("Comment voulez vous appeler ce parametre");
-				String str;
-				str = sc.nextLine();
-				setNom(str);
-				break;
-			case 2:
-				System.out.println("Vous avez saisi : choix 2");
-				// TODO
-				break;
-			case 3:
-				System.out.println("Vous avez saisi : choix 3");
-				// TODO attention, defini automatiquement le type
-				break;
-			default:
+			reponseUser = sc.nextLine();
+			if(reponseUser.matches("^[0-3]$")){
+				choix = Integer.parseInt(reponseUser);
+				switch (choix) {
+					case 1:
+						System.out.println("Vous avez saisi : choix 1");
+						System.out.println("Comment voulez vous appeler ce parametre");
+						String str;
+						str = sc.nextLine();
+						setNom(str);
+						break;
+					case 2:
+						System.out.println("Vous avez saisi : choix 2");
+						// TODO
+						break;
+					case 3:
+						if(getType().equals("String")||getType().equals("int")||getType().equals("float")||getType().equals("boolean")) {
+							System.out.println("Vous avez saisi : choix 3");
+							donnerValInit(sc);
+						}
+						else {
+							System.out.println("Merci de saisir un choix du menu");
+						}
+						break;
+					default:
+				}
+			}
+			else {
+				System.out.println("Merci de saisir un choix du menu");
 			}
 		}
 	}
@@ -44,7 +55,9 @@ public class Parametre {
 		System.out.println("0- Quitter");
 		System.out.println("1- Rennomer le parametre");
 		System.out.println("2- Definir le type du parametre");
-		System.out.println("3- Definir la valeur par defaut du parametre");
+		if(getType().equals("String")||getType().equals("int")||getType().equals("float")||getType().equals("boolean")) {
+			System.out.println("3- Definir la valeur par defaut du parametre");
+		}
 	}
 
 	public String getNom() {
@@ -73,6 +86,40 @@ public class Parametre {
 
 	public void afficher() {
 		System.out.println(getType() + " " + getNom());
+	}
+	
+	private void donnerValInit(Scanner sc) {
+		boolean bonType = false;
+		String str = "";
+		while(!bonType) {
+			System.out.println("Quelle valeur voulez-vous donner ?");
+			str = sc.nextLine();
+			if(getType().equals("String")) {
+				setValInit(str);
+				bonType = true;
+			}
+			else if(getType().equals("int")) {
+				if(str.matches("^(-|\\+)?[0-9]+$")) {
+					setValInit(str);
+					bonType = true;
+				}
+			}
+			else if(getType().equals("float")) {
+				if(str.matches("^(-|\\+)?[0-9]+(\\.[0-9]+)?$")) {
+					setValInit(str);
+					bonType = true;
+				}
+			}
+			else if(getType().equals("boolean")) {
+				if(str.equals("true")||str.equals("false")) {
+					setValInit(str);
+					bonType = true;
+				}
+			}
+			if(!bonType) {
+				System.out.println("La valeur donnée n'est pas du type " + getType() + " du paramètre");
+			}
+		}
 	}
 
 }

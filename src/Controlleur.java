@@ -10,39 +10,46 @@ public class Controlleur {
     }
 
     public void play() {
-        int choix = -1;
         Scanner sc = new Scanner(System.in);
+        int choix = -1;
+        String reponseUser;
         while (choix != 0) {
             afficherOptionsMenu();
-            choix = Integer.parseInt(sc.nextLine());
+            reponseUser = sc.nextLine();
+			if(reponseUser.matches("^[0-4]$")){
+				choix = Integer.parseInt(reponseUser);
 
-            switch (choix) {
-            case 1:
-                System.out.println("Vous avez saisi : choix 1");
-                crerNouveauDiagrammeDeClasse(sc);
-                break;
-            case 2:
-                System.out.println("Vous avez saisi : choix 2");
-                afficherDiagrammes();
-                break;
-            case 3:
-                System.out.println("Vous avez saisi : choix 3");
-                if(listeDiagrammeClasse.size() >= 1){
-                    choixDiagrammeDeClasse(sc).menu(sc);
-                }else {
-                    System.out.println("Aucune méthode");
-                }
-                break;
-            case 4:
-                System.out.println("Vous avez saisi : choix 4");
-                if(listeDiagrammeClasse.size() >= 1){
-                    supprimerDiagrammeClasse(sc);
-                }else {
-                    System.out.println("Aucune méthode");
-                }
-                break;
-            default:
-            }
+	            switch (choix) {
+	            case 1:
+	                System.out.println("Vous avez saisi : choix 1");
+	                crerNouveauDiagrammeDeClasse(sc);
+	                break;
+	            case 2:
+	                System.out.println("Vous avez saisi : choix 2");
+	                afficherDiagrammes();
+	                break;
+	            case 3:
+	                System.out.println("Vous avez saisi : choix 3");
+	                if(listeDiagrammeClasse.size() >= 1){
+	                    choixDiagrammeDeClasse(sc).menu(sc);
+	                }else {
+	                    System.out.println("Aucune méthode");
+	                }
+	                break;
+	            case 4:
+	                System.out.println("Vous avez saisi : choix 4");
+	                if(listeDiagrammeClasse.size() >= 1){
+	                    supprimerDiagrammeClasse(sc);
+	                }else {
+	                    System.out.println("Aucune méthode");
+	                }
+	                break;
+	            default:
+	            }
+			}
+			else {
+				System.out.println("Merci de saisir un choix du menu");
+			}
         }
         sc.close();
     }

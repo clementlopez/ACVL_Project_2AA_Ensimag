@@ -10,23 +10,30 @@ public class Attribut {
 
     public void menu(Scanner sc) {
     	int choix = -1;
-    	while(choix!=0){
-	        afficherOptionsMenu();
-            choix = Integer.parseInt(sc.nextLine());
-            switch (choix) {
-	            case 1:
-	                System.out.println("Vous avez saisi : choix 1");
-	                System.out.println("Comment voulez vous appeler cet attribut");
-	                renommer(sc);
-	                break;
-	            case 2:
-	                System.out.println("Vous avez saisi : choix 2");
-	                break;
-	            case 3:
-	                System.out.println("Vous avez saisi : choix 3");
-	                break;
-	          default:
-	        }
+        String reponseUser;
+        while (choix != 0) {
+            afficherOptionsMenu();
+            reponseUser = sc.nextLine();
+			if(reponseUser.matches("^[0-3]$")){
+				choix = Integer.parseInt(reponseUser);
+	            switch (choix) {
+		            case 1:
+		                System.out.println("Vous avez saisi : choix 1");
+		                System.out.println("Comment voulez vous appeler cet attribut");
+		                renommer(sc);
+		                break;
+		            case 2:
+		                System.out.println("Vous avez saisi : choix 2");
+		                break;
+		            case 3:
+		                System.out.println("Vous avez saisi : choix 3");
+		                break;
+		          default:
+		        }
+			}
+			else {
+				System.out.println("Merci de saisir un choix du menu");
+			}
     	}
     }
     private void afficherOptionsMenu() {

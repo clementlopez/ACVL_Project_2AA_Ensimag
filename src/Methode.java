@@ -14,49 +14,56 @@ public class Methode {
 
 	public void menu(Scanner sc) {
 		int choix = -1;
-		while (choix != 0) {
-			afficherOptionsMenu();
-			choix = Integer.parseInt(sc.nextLine());
+        String reponseUser;
+        while (choix != 0) {
+            afficherOptionsMenu();
+            reponseUser = sc.nextLine();
+			if(reponseUser.matches("^[0-3]$")){
+				choix = Integer.parseInt(reponseUser);
 
-			switch (choix) {
-			case 1:
-				System.out.println("Vous avez saisi : choix 1");
-				creerNouveauParametre(sc);
-				break;
-			case 2:
-				System.out.println("Vous avez saisi : choix 2");
-				afficherParametres();
-				break;
-			case 3:
-				System.out.println("Vous avez saisi : choix 3");
-				if(listeParametres.size() >= 1){
-					choixParametre(sc).menu(sc);
-				}else {
-					System.out.println("Aucune méthode");
+				switch (choix) {
+					case 1:
+						System.out.println("Vous avez saisi : choix 1");
+						creerNouveauParametre(sc);
+						break;
+					case 2:
+						System.out.println("Vous avez saisi : choix 2");
+						afficherParametres();
+						break;
+					case 3:
+						System.out.println("Vous avez saisi : choix 3");
+						if(listeParametres.size() >= 1){
+							choixParametre(sc).menu(sc);
+						}else {
+							System.out.println("Aucune methode");
+						}
+						break;
+					case 4:
+						System.out.println("Vous avez saisi : choix 4");
+						if(listeParametres.size() >= 1){
+							supprimerParametre(sc);
+						}else {
+							System.out.println("Aucune methode");
+						}
+						break;
+					case 5:
+						System.out.println("Vous avez saisi : choix 5");// TODO
+						break;
+					case 6:
+						System.out.println("Vous avez saisi : choix 6");
+						break;
+					case 7:
+						System.out.println("Vous avez saisi : choix 7");
+						break;
+					case 8:
+						System.out.println("Vous avez saisi : choix 8");
+						renommer(sc);
+						break;
+					default:
 				}
-				break;
-			case 4:
-				System.out.println("Vous avez saisi : choix 4");
-				if(listeParametres.size() >= 1){
-					supprimerParametre(sc);
-				}else {
-					System.out.println("Aucune méthode");
-				}
-				break;
-			case 5:
-				System.out.println("Vous avez saisi : choix 5");// TODO
-				break;
-			case 6:
-				System.out.println("Vous avez saisi : choix 6");
-				break;
-			case 7:
-				System.out.println("Vous avez saisi : choix 7");
-				break;
-			case 8:
-				System.out.println("Vous avez saisi : choix 8");
-				renommer(sc);
-				break;
-			default:
+			}
+			else {
+				System.out.println("Merci de saisir un choix du menu");
 			}
 		}
 	}
