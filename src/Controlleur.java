@@ -80,6 +80,7 @@ public class Controlleur {
     public void afficherDiagrammes() {
         System.out.println("** Diagrammes de classe **");
         for (int i = 0; i < listeDiagrammeClasse.size(); i++) {
+        	System.out.println("________________________");
             listeDiagrammeClasse.get(i).afficher();
         }
     }
