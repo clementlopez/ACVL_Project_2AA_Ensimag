@@ -22,8 +22,7 @@ public class Controlleur {
 	            switch (choix) {
 	            case 1:
 	                System.out.println("Vous avez saisi : choix 1");
-	                crerNouveauDiagrammeDeClasse(sc);
-	                //System.out.println(choix);
+	                creerNouveauDiagrammeDeClasse(sc);
 	                break;
 	            case 2:
 	                System.out.println("Vous avez saisi : choix 2");
@@ -34,7 +33,7 @@ public class Controlleur {
 	                if(listeDiagrammeClasse.size() >= 1){
 	                    choixDiagrammeDeClasse(sc).menu(sc);
 	                }else {
-	                    System.out.println("Aucune méthode");
+	                    System.out.println("Aucune methode");
 	                }
 	                break;
 	            case 4:
@@ -42,7 +41,7 @@ public class Controlleur {
 	                if(listeDiagrammeClasse.size() >= 1){
 	                    supprimerDiagrammeClasse(sc);
 	                }else {
-	                    System.out.println("Aucune méthode");
+	                    System.out.println("Aucune methode");
 	                }
 	                break;
 	            default:
@@ -55,7 +54,7 @@ public class Controlleur {
         sc.close();
     }
 
-    private void crerNouveauDiagrammeDeClasse(Scanner sc) {
+    private void creerNouveauDiagrammeDeClasse(Scanner sc) {
         System.out.println("** Creation d'un diagramme de classe **");
         System.out.println("Donner un nom a votre diagramme de classe");
         String str = "";
@@ -68,10 +67,10 @@ public class Controlleur {
     }
 
     private void afficherOptionsMenu() {
-        System.out.println("** Menu Diagramme de Classe **");
+        System.out.println("** Menu Controlleur **");
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
-        System.out.println("1- Crer un nouveau diagramme de classes");
+        System.out.println("1- Creer un nouveau diagramme de classes");
         System.out.println("2- Voir les diagrammes de classes existants");
         System.out.println("3- Modifier les diagrammes de classes existants");
         System.out.println("4- Supprimer un diagramme de classes existant");

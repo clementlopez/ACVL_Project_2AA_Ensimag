@@ -5,6 +5,7 @@ public class Association {
     Classe origine;
     Classe extremite;
     boolean estNavigable;
+    String typeAssociation;
 
     public String getNom() {
         return nom;
@@ -14,7 +15,15 @@ public class Association {
         this.nom = nom;
     }
 
-    public boolean isEstNavigable() {
+    public String getTypeAssociation() {
+		return typeAssociation;
+	}
+
+	public void setTypeAssociation(String typeAssociation) {
+		this.typeAssociation = typeAssociation;
+	}
+
+	public boolean isEstNavigable() {
 		return estNavigable;
 	}
 
@@ -35,6 +44,7 @@ public class Association {
         this.origine = mOrigine;
         this.extremite = mExtremite;
         this.estNavigable = true;
+        this.typeAssociation = "Association";
     }
 
     public void menu(Scanner sc) {
@@ -43,7 +53,7 @@ public class Association {
         while (choix != 0) {
             afficherOptionsMenu();
             reponseUser = sc.nextLine();
-			if(reponseUser.matches("^[0-3]$")){
+			if(reponseUser.matches("^[0-4]$")){
 				choix = Integer.parseInt(reponseUser);
 	            switch (choix) {
 		            case 1:
@@ -57,6 +67,11 @@ public class Association {
 		                break;
 		            case 3:
 		                System.out.println("Vous avez saisi : choix 3");
+		                System.out.println("Non implemente");
+		                break;
+		            case 4:
+		                System.out.println("Vous avez saisi : choix 4");
+		                changerTypeAsso(sc);
 		                break;
 		            default:
 		                break;
@@ -80,6 +95,7 @@ public class Association {
         	System.out.println("2- Rendre l'association navigable en double sens");
         }
         System.out.println("3- Modifier la multiplicite de l'association");
+        System.out.println("4- Modifier le type d'association");
     }
 
     private void renommer(Scanner sc) {
@@ -91,11 +107,11 @@ public class Association {
     }
 
     public void afficher() {
-        System.out.println("\t\t- " + getNom());
+        System.out.println("\t\t- " + getNom() + " est une " + getTypeAssociation());
         if (isEstNavigable()) {
-            System.out.println("Navigable en double sens");
+            System.out.println("\t\tNavigable en double sens");
         } else {
-            System.out.println("Navigable en sens unique");
+            System.out.println("\t\tNavigable en sens unique");
         }
         System.out.println("\t\t\tEntre " + getOrigine().getNom());
         System.out.println("\t\t\tEt " + getExtremite().getNom());
@@ -108,5 +124,36 @@ public class Association {
         } else {
             System.out.println("L'association " + getNom() + " n'est desormais navigable qu'en sens unique");
         }
+    }
+    
+    private void changerTypeAsso(Scanner sc) {
+    	System.out.println("Quel type voulez-vous ?");
+    	System.out.println("0- Association");
+    	System.out.println("1- Aggregation");
+    	System.out.println("2- Composition");
+    	int choix = -1;
+        String reponseUser;
+        while (choix == -1) {
+            reponseUser = sc.nextLine();
+            System.out.println(reponseUser);
+			if(reponseUser.matches("^[0-2]$")){
+				choix = Integer.parseInt(reponseUser);
+				switch(choix) {
+				case 0:
+					setTypeAssociation("Association");
+					break;
+				case 1:
+					setTypeAssociation("Aggregation");
+					break;
+				case 2:
+					setTypeAssociation("Composition");
+					break;
+				}
+			}
+			else {
+				System.out.println("Veuillez selectionner un des 3 types d'association");
+			}
+        }
+        System.out.println("Le type d'association a bien ete modifie");
     }
 }

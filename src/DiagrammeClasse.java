@@ -113,13 +113,14 @@ public class DiagrammeClasse {
     private void creerNouvelleAssociation(Scanner sc) {
         if (listeClasses.size() >= 1) {
             System.out.println("** Creation d'un association de classes **");
-            System.out.println("Les associations non binaires ne sont pas implementees"); // todo
+            System.out.println("Les associations non binaires ne sont pas implementees");
             System.out.println("Choissisez la classe d'origine");
             Classe co = choixClasse(sc);
             System.out.println("Choissisez la classe d'arrivee de l'association");
             Classe ce = choixClasse(sc);
             System.out.println("Choissisez la classe d'origine");
             Association a = new Association(co, ce);
+            this.listeAssociations.add(a);
             a.menu(sc);
         } else {
             System.out.println("Vous devez d'abord creer une classe");
@@ -127,7 +128,7 @@ public class DiagrammeClasse {
     }
 
     private void afficherOptionsMenu() {
-        System.out.println("** Menu Classe **");
+        System.out.println("** Menu Diagramme de Classes **");
 
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
