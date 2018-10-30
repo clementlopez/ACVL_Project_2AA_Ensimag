@@ -52,6 +52,7 @@ public class Parametre {
 	}
 
 	private void afficherOptionsMenu() {
+		System.out.println("########################");
 		System.out.println("** Menu Parametre **");
 
 		System.out.println("Que voulez vous faire ?");

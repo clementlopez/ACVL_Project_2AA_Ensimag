@@ -6,10 +6,12 @@ public class Methode {
 	String nom;
 	String typeRetour = "non defini";
 	List<Parametre> listeParametres;
+	String visibilite;
 
 	public Methode(String nom) {
 		this.nom = nom;
 		listeParametres = new ArrayList<>();
+		this.visibilite = "public";
 	}
 
 	public void menu(Scanner sc, List<String> listeTypes) {
@@ -18,7 +20,7 @@ public class Methode {
         while (choix != 0) {
             afficherOptionsMenu();
             reponseUser = sc.nextLine();
-			if(reponseUser.matches("^[0-7]$")){
+			if(reponseUser.matches("^[0-8]$")){
 				choix = Integer.parseInt(reponseUser);
 
 				switch (choix) {
@@ -56,8 +58,12 @@ public class Methode {
 						System.out.println("Cette methode n'a plus de type de retour");
 						break;
 					case 7:
-						System.out.println("Vous avez saisi : choix 8");
+						System.out.println("Vous avez saisi : choix 7");
 						renommer(sc);
+						break;
+					case 8:
+						System.out.println("Vous avez saisi : choix 8");
+						definirVisibilite(sc);
 						break;
 					default:
 				}
@@ -69,6 +75,7 @@ public class Methode {
 	}
 
 	private void afficherOptionsMenu() {
+		System.out.println("########################");
 		System.out.println("** Menu Methode **");
 
 		System.out.println("Que voulez vous faire ?");
@@ -80,6 +87,7 @@ public class Methode {
 		System.out.println("5- Modifier le type de retour");
 		System.out.println("6- Supprimer le type de retour");
 		System.out.println("7- Renommer la methode");
+		System.out.println("8- Definir la visibilite de la methode");
 	}
 
 	private void creerNouveauParametre(Scanner sc, List<String> listeTypes) {
@@ -134,6 +142,14 @@ public class Methode {
 		this.nom = nom;
 	}
 
+	public String getVisibilite() {
+		return visibilite;
+	}
+
+	public void setVisibilite(String visibilite) {
+		this.visibilite = visibilite;
+	}
+
 	public String getTypeRetour() {
 		return typeRetour;
 	}
@@ -153,17 +169,18 @@ public class Methode {
 	private void supprimerParametre(Scanner sc) {
 		Parametre param = choixParametre(sc);
 		listeParametres.remove(param);
-		System.out.println("Le parametre " + param.getNom() + " a bien �t� supprim�");
+		System.out.println("Le parametre " + param.getNom() + " a bien ete supprime");
 	}
 
 	public void afficher() {
-		System.out.print("\t\t\t\t " + getNom() + "(");
+		System.out.print("\t\t\t\t " + getVisibilite() + " " + getNom() + "(");
 		for (int i = 0; i < listeParametres.size(); i++) {
 			System.out.print(listeParametres.get(i).getNom());
 			if (i < listeParametres.size() - 1) {
 				System.out.print(", ");
 			}
 		}
+		System.out.print(")");
 		if (!typeRetour.equals("non defini")) {
 			System.out.println(" : " + typeRetour);
 		}
@@ -186,5 +203,36 @@ public class Methode {
 			str = sc.nextLine();
 		}
 		setNom(str);
+	}
+	
+	private void definirVisibilite(Scanner sc) {
+    	System.out.println("Quel visibilite voulez-vous ?");
+    	System.out.println("0- public");
+    	System.out.println("1- private");
+    	System.out.println("2- protected");
+    	int choix = -1;
+        String reponseUser;
+        while (choix == -1) {
+            reponseUser = sc.nextLine();
+            System.out.println(reponseUser);
+			if(reponseUser.matches("^[0-2]$")){
+				choix = Integer.parseInt(reponseUser);
+				switch(choix) {
+				case 0:
+					setVisibilite("public");
+					break;
+				case 1:
+					setVisibilite("private");
+					break;
+				case 2:
+					setVisibilite("protected");
+					break;
+				}
+			}
+			else {
+				System.out.println("Veuillez selectionner un des 3 types de visibilite");
+			}
+        }
+        System.out.println("Le type de visibilite a bien ete modifie");
 	}
 }

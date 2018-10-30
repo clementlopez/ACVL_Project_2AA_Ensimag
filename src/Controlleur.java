@@ -67,6 +67,7 @@ public class Controlleur {
     }
 
     private void afficherOptionsMenu() {
+    	System.out.println("########################");
         System.out.println("** Menu Controlleur **");
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");

@@ -20,7 +20,7 @@ public class Attribut {
         while (choix != 0) {
             afficherOptionsMenu();
             reponseUser = sc.nextLine();
-			if(reponseUser.matches("^[0-3]$")){
+			if(reponseUser.matches("^[0-4]$")){
 				choix = Integer.parseInt(reponseUser);
 	            switch (choix) {
 		            case 1:
@@ -33,8 +33,12 @@ public class Attribut {
 		                definirType(sc, listeTypes);
 		                break;
 		            case 3:
+		                System.out.println("Vous avez saisi : choix 3");
+		                definirVisibilite(sc);
+		                break;
+		            case 4:
 		            	if(getType().equals("String")||getType().equals("int")||getType().equals("float")||getType().equals("boolean")) {
-							System.out.println("Vous avez saisi : choix 3");
+							System.out.println("Vous avez saisi : choix 4");
 							donnerValInit(sc);
 						}
 						else {
@@ -49,14 +53,47 @@ public class Attribut {
 			}
     	}
     }
-    private void afficherOptionsMenu() {
+    private void definirVisibilite(Scanner sc) {
+    	System.out.println("Quel visibilite voulez-vous ?");
+    	System.out.println("0- public");
+    	System.out.println("1- private");
+    	System.out.println("2- protected");
+    	int choix = -1;
+        String reponseUser;
+        while (choix == -1) {
+            reponseUser = sc.nextLine();
+            System.out.println(reponseUser);
+			if(reponseUser.matches("^[0-2]$")){
+				choix = Integer.parseInt(reponseUser);
+				switch(choix) {
+				case 0:
+					setVisibilite("public");
+					break;
+				case 1:
+					setVisibilite("private");
+					break;
+				case 2:
+					setVisibilite("protected");
+					break;
+				}
+			}
+			else {
+				System.out.println("Veuillez selectionner un des 3 types de visibilite");
+			}
+        }
+        System.out.println("Le type de visibilite a bien ete modifie");
+	}
+
+	private void afficherOptionsMenu() {
+		System.out.println("########################");
         System.out.println("** Menu Attribut **");
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
         System.out.println("1- Rennomer l'attribut");
         System.out.println("2- Definir le type de l'attribut");
+        System.out.println("3- Definir la visibilite de l'attribut");
         if(getType().equals("String")||getType().equals("int")||getType().equals("float")||getType().equals("boolean")) {
-        	System.out.println("3- Definir la valeur par defaut de l'attribut");
+        	System.out.println("4- Definir la valeur par defaut de l'attribut");
 		}
     }
     
@@ -113,7 +150,7 @@ public class Attribut {
 	}
 
 	public void afficher(){
-    	System.out.print("\t\t\t\t " + getType() + " " + getNom());
+    	System.out.print("\t\t\t\t " + getVisibilite() + " " + getType() + " " + getNom());
     	if(!getValInit().equals("")) {
     		System.out.println(" = " + getValInit());
     	}

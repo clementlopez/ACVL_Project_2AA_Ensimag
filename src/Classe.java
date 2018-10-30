@@ -116,6 +116,7 @@ public class Classe {
     }
 
     private void afficherOptionsMenu() {
+    	System.out.println("########################");
         System.out.println("** Menu Classe **");
 
         System.out.println("Que voulez vous faire ?");

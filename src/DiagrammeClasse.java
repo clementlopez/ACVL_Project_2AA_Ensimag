@@ -78,7 +78,7 @@ public class DiagrammeClasse {
 		                break;
 		            case 9:
 		                System.out.println("Vous avez saisi : choix 9");
-		                System.out.println("Non implementes");
+		                System.out.println("Non implemente");
 		                break;
 		            case 10:
 		                System.out.println("Vous avez saisi : choix 10");
@@ -128,6 +128,7 @@ public class DiagrammeClasse {
     }
 
     private void afficherOptionsMenu() {
+    	System.out.println("########################");
         System.out.println("** Menu Diagramme de Classes **");
 
         System.out.println("Que voulez vous faire ?");

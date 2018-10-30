@@ -84,6 +84,7 @@ public class Association {
     }
 
     void afficherOptionsMenu() {
+    	System.out.println("########################");
         System.out.println("** Menu Association **");
         System.out.println("Que voulez vous faire ?");
         System.out.println("0- Quitter");
